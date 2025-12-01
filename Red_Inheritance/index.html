@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色传承 - 现代网页设计</title>
+    <!-- 引入外部CSS文件 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入图标库（搜索功能可能用到） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- 顶部区域：Logo + 标题 + 搜索框（固定不动） -->
+    <header class="top-header">
+        <div class="logo-area">
+            <img src="../images/logo01.png" alt="Logo" class="logo">
+        </div>
+        <div class="title-area">
+            <h1>烽 火 岁 月 铭 民 族 史，铁 血 忠 魂 铸 英 雄 碑</h1>
+        </div>
+        <div class="search-area">
+            <input type="text" placeholder="站内搜索">
+            <button>搜索</button>
+        </div>
+    </header>
+
+    <!-- 导航栏（固定不动） -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="../index.html" title="首页">首页</a></li>
+            <li><a href="../HistoricalJourney/index.html" title="历史征程">历史征程</a></li>
+            <li><a href="../HERO/heroes.html" title="英雄人物">英雄人物</a></li>
+            <li><a href="../Spirit/spirit.html" title="抗战精神">抗战精神</a></li>
+            <li><a href="../Red_Inheritance/index.html" title="红色传承" class="active">红色传承</a></li>
+            <li><a href="../Redhall/index.html" title="纪念展馆">纪念展馆</a></li>
+        </ul>
+    </nav>
+
+    <!-- 页面主体内容 -->
+    <div class="header-container">
+        <!-- 功能卡片区域 -->
+        <main class="cards-container">
+            <!-- 学习心得卡片 (已更新) -->
+            <section class="card interactive-card">
+                <h3>学习心得</h3>
+                <textarea class="card-textarea" placeholder="请分享您的学习心得..."></textarea>
+                <button class="card-submit-btn" data-type="心得">分享心得</button>
+            </section>
+
+            <!-- 红色故事讲述卡片 (已更新) -->
+            <section class="card interactive-card">
+                <h3>红色故事讲述</h3>
+                <textarea class="card-textarea" placeholder="分享您知道的红色故事..."></textarea>
+                <div class="file-upload-wrapper">
+                    <label for="story-file" class="file-upload-label">上传附件 (图片/视频)</label>
+                    <input type="file" id="story-file" class="file-input" accept="image/*, video/*">
+                    <span class="file-name">未选择文件</span>
+                </div>
+                <button class="card-submit-btn" data-type="故事">分享故事</button>
+            </section>
+
+            <!-- 传承承诺卡片 -->
+            <section class="card">
+                <h3>传承承诺</h3>
+                <input type="text" class="commit-input" placeholder="我承诺：传承红色基因，争做时代新人">
+                <button class="commit-btn">互动</button>
+            </section>
+        </main>
+
+        <!-- 留言板 -->
+        <section class="message-board">
+            <div class="wave-decoration"></div>
+            <div class="message-content">
+                <div class="message-header">
+                    <img src="../images/teacherLi.png" alt="李老师头像" class="user-avatar">
+                    <strong>李老师：</strong>
+                </div>
+                <p class="message-text">青年一代要铭记历史，勇担使命</p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <div class="contact-info">
+            <h3>联系我们</h3>
+            <p>电话：198-6852-1705</p>
+            <p>邮编：510830</p>
+            <p>地址：广东省广州市花都区赤坭镇培正路53号</p>
+            <p>版权所有：广东培正学院羊欧妮小队</p>
+        </div>
+    </footer>
+
+
+    <!-- 在body末尾引入外部JS文件 -->
+    <script src="script.js"></script>
+</body>
+
+</html>

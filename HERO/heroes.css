@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", "Heiti SC", sans-serif;
+}
+
+:root {
+    --primary-color: #C8102E;
+    /* 统一主色调 */
+    --secondary-color: #333333;
+    --light-gray: #F5F5F5;
+    --white: #FFFFFF;
+    --gray: #666666;
+    --light-red: #F8E0E2;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, rgba(200, 16, 46, 0.1), transparent 60%) fixed,
+        url("../images/Greatwall.png") center/cover fixed;
+    color: var(--secondary-color);
+    line-height: 1.8;
+    padding-top: 140px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.92);
+    z-index: -1;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #c8102e, #971126);
+    border-radius: 999px;
+}
+
+
+/* 顶部Header样式 - 完全固定 */
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    padding: 15px 30px;
+    color: var(--primary-color);
+    border-bottom: 1px solid #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: 80px;
+}
+
+.logo-area .logo {
+    height: 50px;
+    width: auto;
+}
+
+.title-area h1 {
+    font-size: 32px;
+    margin: 0 auto;
+    text-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 4px;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.search-area input {
+    padding: 8px 14px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-area button {
+    padding: 8px 16px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.search-area button:hover {
+    background: #9b0f24;
+}
+
+
+/* 导航栏样式 - 固定在头部下方 */
+
+.main-nav {
+    background-color: var(--primary-color);
+    padding: 10px 0;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    height: 50px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-nav li {
+    margin: 0 80px;
+}
+
+.main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s, opacity 0.3s;
+    opacity: 0.85;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #FFD700;
+    opacity: 1;
+}
+
+
+/* 与目标页面一致，仅hover变金色，active状态不额外加色 */
+
+
+/* 英雄卡片容器 - 保留原有样式，调整顶部间距 */
+
+.heroes-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+
+/* 英雄卡片样式 - 保留原有 */
+
+.hero-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(200, 16, 46, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.hero-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 35px rgba(200, 16, 46, 0.18);
+}
+
+.hero-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.hero-info {
+    padding: 20px;
+}
+
+.hero-info h3 {
+    color: var(--secondary-color);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.hero-time {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.hero-desc {
+    color: var(--secondary-color);
+    font-size: 15px;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+/* 模态框样式 - 保留原有 */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 700px;
+    background-color: var(--white);
+    border-radius: 8px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: var(--gray);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: var(--primary-color);
+}
+
+.modal-header {
+    width: 100%;
+    height: 800px;
+}
+
+.modal-header-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-body h2 {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.modal-body .hero-meta {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #EEEEEE;
+    padding-bottom: 15px;
+}
+
+.modal-body .hero-detail {
+    color: var(--secondary-color);
+    line-height: 2;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.modal-body .related-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.modal-body .related-link:hover {
+    background-color: var(--primary-color);
+}
+
+
+/* 页脚样式 - 完全复用目标页面代码 */
+
+.site-footer {
+    background-color: #C81C23;
+    color: #fff;
+    padding: 30px 0;
+    background-image: url("../images/GW03.png");
+    background-size: 100% 100px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    margin-top: 60px;
+}
+
+.contact-info {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+}
+
+.contact-info h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #FFD700;
+    padding-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 17px;
+    margin: 6px 0;
+}
+
+
+/* 响应式适配 - 复用目标页面逻辑 */
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+    .top-header {
+        height: 60px;
+        padding: 10px 15px;
+    }
+    .title-area h1 {
+        font-size: 24px;
+        margin-left: 20px;
+    }
+    .logo-area .logo {
+        height: 40px;
+    }
+    .main-nav {
+        top: 60px;
+        height: 40px;
+    }
+    .main-nav ul {
+        justify-content: space-around;
+    }
+    .main-nav li {
+        margin: 0 10px;
+    }
+    .main-nav a {
+        font-size: 14px;
+    }
+    .modal-header {
+        height: 200px;
+    }
+    .modal-body h2 {
+        font-size: 24px;
+    }
+    .hero-img {
+        height: 180px;
+    }
+}

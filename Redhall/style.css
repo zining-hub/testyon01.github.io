@@ -1,0 +1,480 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", "Heiti SC", sans-serif;
+}
+
+:root {
+    --primary-color: #C8102E;
+    /* 统一主色调 */
+    --secondary-color: #333333;
+    --light-gray: #F5F5F5;
+    --white: #FFFFFF;
+    --gray: #666666;
+    --light-red: #F8E0E2;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, rgba(200, 16, 46, 0.12), transparent 60%) fixed,
+        url("../images/Greatwall.png") center/cover fixed;
+    color: var(--secondary-color);
+    line-height: 1.8;
+    padding-top: 140px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.92);
+    z-index: -1;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #c8102e, #971126);
+    border-radius: 999px;
+}
+
+
+/* 顶部Header样式 - 完全固定 */
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    padding: 15px 30px;
+    color: var(--primary-color);
+    border-bottom: 1px solid #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: 80px;
+}
+
+.logo-area .logo {
+    height: 50px;
+    width: auto;
+}
+
+.title-area h1 {
+    font-size: 32px;
+    margin: 0 auto;
+    text-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 4px;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.search-area input {
+    padding: 8px 14px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-area button {
+    padding: 8px 16px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.search-area button:hover {
+    background: #9b0f24;
+}
+
+
+/* 导航栏样式 - 固定在头部下方 */
+
+.main-nav {
+    background-color: var(--primary-color);
+    padding: 10px 0;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    height: 50px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+
+.main-nav li {
+    margin: 0 80px;
+}
+
+.main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s, opacity 0.3s;
+    opacity: 0.85;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #FFD700;
+    opacity: 1;
+}
+
+
+/* 页面主体容器 - 调整margin-top适配固定头部 */
+
+.header-container {
+    max-width: 1200px;
+    margin: 160px auto 50px;
+    /* 80px(top-header) + 50px(main-nav) + 30px间距 */
+    padding: 20px;
+    background-color: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+/* 主内容区：包裹VR展厅，确保顶部间距足够 */
+
+.main-content {
+    padding-top: 40px;
+    width: 100%;
+}
+
+
+/* VR展厅区域：确保完全可见，无遮挡 */
+
+.vr-section {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    /* 上下间距，底部与页脚分离 */
+    padding: 60px 30px 40px;
+    /* 顶部内边距充足，标题远离上沿 */
+    background-color: var(--white);
+    border-radius: 12px;
+    /* 优化圆角，更美观 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eee;
+}
+
+
+/* VR展厅标题：强制可见，样式醒目 */
+
+.vr-section-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 36px;
+    /* 加大字体，确保可见 */
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
+    /* 层级最高，不被任何元素覆盖 */
+    font-weight: 700;
+    letter-spacing: 3px;
+    /* 增加字间距，更醒目 */
+    line-height: 1.5;
+    /* 行高正常，避免裁剪 */
+}
+
+
+/* 标题下划线：强化视觉 */
+
+.vr-section-title::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 5px;
+    background-color: var(--primary-color);
+    margin: 20px auto 0;
+    border-radius: 3px;
+}
+
+
+/* VR卡片容器：布局合理，无挤压 */
+
+.vr-cards-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* 适配小屏幕，自动换行 */
+}
+
+
+/* VR卡片样式 */
+
+.vr-card {
+    width: 280px;
+    flex-shrink: 0;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.vr-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(200, 16, 46, 0.15);
+}
+
+.vr-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.vr-card-info {
+    padding: 20px;
+}
+
+.vr-card-info h3 {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.vr-card-info p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.vr-link-text {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 15px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.vr-card:hover .vr-link-text {
+    transform: translateX(5px);
+}
+
+
+/* 更多展厅卡片 */
+
+.vr-card-more {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #f9f9f9, #fff);
+    border: 2px dashed var(--primary-color);
+}
+
+.vr-card-more .vr-card-info {
+    padding: 30px 20px;
+}
+
+.vr-card-more:hover {
+    background: linear-gradient(135deg, #fff, #f9f9f9);
+}
+
+
+/* 页脚样式 */
+
+.site-footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 40px 0 60px;
+    /* 底部内边距，适配背景图 */
+    background-image: url("../images/GW03.png");
+    background-size: 100% 80px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    margin-top: 20px;
+}
+
+.contact-info {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.contact-info h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 17px;
+    margin: 6px 0;
+}
+
+
+/* 响应式适配（手机端） */
+
+@media (max-width: 768px) {
+    /* 顶部Header响应式 */
+    .top-header {
+        padding: 10px 15px;
+        height: 80px;
+    }
+    .title-area h1 {
+        font-size: 18px;
+        /* 移动端缩小标题字体 */
+        margin-left: 20px;
+    }
+    .logo-area .logo {
+        height: 50px;
+    }
+    .search-area input {
+        width: 120px;
+        padding: 6px 8px;
+    }
+    .search-area button {
+        padding: 6px 10px;
+    }
+    /* 导航栏响应式 */
+    .main-nav {
+        top: 80px;
+        height: 55px;
+    }
+    .main-nav li {
+        margin: 0 15px;
+        /* 缩小导航项间距 */
+    }
+    .main-nav a {
+        font-size: 15px;
+    }
+    /* 主内容区响应式 */
+    .main-content {
+        padding-top: 160px;
+        /* 80px(Header) + 55px(Nav) + 25px安全间距 */
+    }
+    /* VR展厅响应式 */
+    .vr-section {
+        margin: 0 auto 40px;
+        padding: 40px 15px 30px;
+    }
+    .vr-section-title {
+        font-size: 28px;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+    }
+    .vr-section-title::after {
+        width: 80px;
+        height: 4px;
+    }
+    .vr-cards-container {
+        gap: 20px;
+    }
+    .vr-card {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+}
+
+
+/* 复用样式（不影响当前页面，保留供其他页面使用） */
+
+.commit-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.commit-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.commit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.commit-btn:hover {
+    background-color: #A00E26;
+}
+
+.message-board {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    border: 1px solid #eee;
+}
+
+.wave-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(90deg, var(--primary-color), #f00, var(--primary-color));
+    border-radius: 0 0 8px 8px;
+}
+
+.message-content {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 20px;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #f0f0f0;
+}
+
+.message-text {
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 1.7;
+}
