@@ -36,6 +36,70 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // 移动端菜单切换
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (mobileMenuBtn && mainNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mainNav.classList.remove('active');
+            });
+        });
+    }
+
+    const timelineItems = document.querySelectorAll('.year-timeline .year-item');
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.querySelector('.year-progress-bar');
+
+    function activateYear(year) {
+        timelineItems.forEach(i => i.classList.toggle('active', i.getAttribute('data-year') === year));
+        if (progressBar) {
+            const index = Math.max(0, Math.min(14, parseInt(year, 10) - 1931));
+            progressBar.style.width = (index / 14) * 100 + '%';
+        }
+    }
+
+    timelineItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const year = item.getAttribute('data-year');
+            let targetSlide = null;
+            slides.forEach(slide => {
+                const h2 = slide.querySelector('h2');
+                if (h2 && h2.textContent.includes(year)) targetSlide = slide;
+            });
+            if (targetSlide) {
+                const offset = window.innerWidth <= 768 ? 140 : 100;
+                const elementPosition = targetSlide.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                const img = targetSlide.querySelector('.img-box img');
+                if (img) {
+                    img.classList.add('pulse');
+                    setTimeout(() => img.classList.remove('pulse'), 800);
+                }
+                activateYear(year);
+            }
+        });
+    });
+
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const h2 = entry.target.querySelector('h2');
+                if (h2) activateYear(h2.textContent.trim());
+            }
+        });
+    }, { threshold: 0.5 });
+
+    slides.forEach(slide => timelineObserver.observe(slide));
+
     // 3. 导航栏当前页面高亮（核心修改：优化URL匹配逻辑）
     const navLinks = document.querySelectorAll('.main-nav a');
     const currentPath = window.location.pathname; // 获取当前页面路径（如：/HistoricalJourney/index.html）

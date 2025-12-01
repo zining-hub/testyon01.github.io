@@ -17,6 +17,11 @@
         <div class="title-area">
             <h1>烽 火 岁 月 铭 民 族 史，铁 血 忠 魂 铸 英 雄 碑</h1>
         </div>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div class="search-area">
             <input type="text" placeholder="站内搜索">
             <button>搜索</button>
@@ -174,6 +179,24 @@
                 link.classList.add('active');
             });
         });
+
+        // 移动端菜单切换
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mainNav = document.querySelector('.main-nav');
+
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.main-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mainNav.classList.remove('active');
+                });
+            });
+        }
     </script>
 </body>
 

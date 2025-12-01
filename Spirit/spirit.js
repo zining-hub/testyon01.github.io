@@ -45,3 +45,21 @@ window.addEventListener('load', function() {
     // 触发一次滚动事件，显示可视区域内的卡片
     window.dispatchEvent(new Event('scroll'));
 });
+
+// 移动端菜单切换
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mainNav = document.querySelector('.main-nav');
+
+if (mobileMenuBtn && mainNav) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        mainNav.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            mainNav.classList.remove('active');
+        });
+    });
+}
