@@ -176,77 +176,271 @@ body::before {
 }
 
 /* 响应式设计 */
+/* 平板设备 */
+@media (max-width: 1024px) {
+    body {
+        padding-top: 90px;
+    }
+
+    .top-header {
+        padding: 15px 30px;
+    }
+
+    .title-area h1 {
+        font-size: 28px;
+        letter-spacing: 1.5px;
+    }
+
+    .logo-area .logo {
+        height: 42px;
+    }
+
+    .search-area input[type="text"] {
+        width: 180px;
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+
+    .main-nav {
+        top: 85px;
+        height: 55px;
+    }
+
+    .main-nav li {
+        margin: 0 30px;
+    }
+
+    .main-nav a {
+        font-size: 17px;
+    }
+
+    .page-content {
+        padding: 0 15px 70px;
+    }
+
+    .carousel-container {
+        height: 320px;
+        border-radius: 20px;
+    }
+
+    .carousel-caption {
+        left: 40px;
+        bottom: 50px;
+        max-width: 500px;
+    }
+
+    .caption-title {
+        font-size: 26px;
+    }
+
+    .intro-section,
+    .journey-grid,
+    .legacy-section {
+        padding: 25px 0;
+    }
+
+    .intro-section h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .intro-section p {
+        font-size: 17px;
+        line-height: 1.8;
+        max-width: 90%;
+    }
+
+    .journey-card {
+        padding: 25px 20px;
+        border-radius: 18px;
+    }
+
+    .journey-card h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .journey-card p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .legacy-section {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+    }
+
+    .legacy-card {
+        padding: 30px 25px;
+        border-radius: 18px;
+    }
+
+    .legacy-kicker {
+        font-size: 36px;
+    }
+
+    .legacy-desc {
+        font-size: 16px;
+    }
+}
+
+/* 手机设备 */
 @media (max-width: 768px) {
     body {
         padding-top: 80px;
     }
 
-    .top-header {
-        padding: 10px 20px;
+    .scrollable-header {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 2px;
+    }
+
+    .scrollable-header>* {
+        display: inline-block;
+        vertical-align: middle;
+        min-width: 80px;
+        margin-right: 12px;
     }
 
     .title-area h1 {
-        font-size: 18px;
+        font-size: 16px;
         letter-spacing: 1px;
-        text-align: center;
+        text-align: left;
+        white-space: nowrap;
+        min-width: 320px;
+        margin: 0 8px;
     }
-    
+
+    .logo-area .logo {
+        height: 36px;
+    }
+
     .search-area {
-        display: none; /* 移动端暂隐藏搜索框，或移入菜单 */
+        display: none;
     }
 
     .mobile-menu-btn {
         display: flex;
     }
 
-    .main-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background: var(--primary-color);
-        flex-direction: column;
-        padding-top: 80px;
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    .scrollable-nav {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 2px;
     }
 
-    .main-nav.active {
-        right: 0;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
+    .scrollable-nav ul {
+        flex-direction: row;
         align-items: center;
+        justify-content: flex-start;
+        min-width: 480px;
     }
 
-    .main-nav li {
-        margin: 20px 0;
+    .scrollable-nav li {
+        margin: 0 24px;
+    }
+
+    .main-nav {
+        position: static;
+        width: 100%;
+        height: 50px;
+        background: var(--primary-color);
+        box-shadow: none;
+        padding-top: 0;
+        transition: none;
     }
 
     .main-nav a {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .page-content {
-        padding: 0 15px 60px;
+        padding: 0 8px 60px;
     }
 
     .carousel-container {
-        height: 200px;
+        height: 180px;
         min-height: auto;
     }
-    
-    .intro-section, .journey-grid, .legacy-section {
-        padding: 20px 0;
+
+    .intro-section,
+    .journey-grid,
+    .legacy-section {
+        padding: 16px 0;
     }
-    
+
     .legacy-card {
         width: 100%;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
     }
 }
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 120px;
+    }
+
+    .top-header {
+        padding: 8px 15px;
+    }
+
+    .title-area h1 {
+        font-size: 18px;
+        letter-spacing: 0.5px;
+    }
+
+    .logo-area .logo {
+        height: 30px;
+    }
+
+    .carousel-container {
+        height: 50vh;
+    }
+
+    .carousel-caption {
+        left: 15px;
+        bottom: 20px;
+        max-width: 80%;
+    }
+
+    .caption-kicker {
+        font-size: 10px;
+        padding: 2px 10px;
+        margin-bottom: 6px;
+    }
+
+    .caption-title {
+        font-size: 16px;
+    }
+
+    .intro-section h2 {
+        font-size: 20px;
+    }
+
+    .journey-card {
+        padding: 15px;
+    }
+
+    .card-header h3 {
+        font-size: 16px;
+    }
+
+    .legacy-card {
+        padding: 15px 10px;
+    }
+
+    .legacy-kicker {
+        font-size: 20px;
+    }
+
+    .quote-section p {
+        font-size: 16px;
+    }
+}
+
 
 .page-content {
     max-width: 1200px;
@@ -495,7 +689,7 @@ body::before {
     opacity: 1;
 }
 
-.journey-card > * {
+.journey-card>* {
     position: relative;
     z-index: 2;
 }
@@ -590,19 +784,57 @@ body::before {
     opacity: 0.85;
 }
 
+/* 手机设备 */
 @media (max-width: 768px) {
     body {
         padding-top: 130px;
     }
+
     .top-header {
         flex-direction: column;
         gap: 8px;
         height: auto;
+        padding: 12px 20px;
     }
+
     .title-area h1 {
         font-size: 22px;
         letter-spacing: 1px;
+        text-align: center;
+        min-width: auto;
+        margin: 0;
     }
+
+    .logo-area .logo {
+        height: 38px;
+    }
+
+    .search-area {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: var(--primary-color);
+        flex-direction: column;
+        padding-top: 80px;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+
     .main-nav ul {
         flex-direction: row;
         flex-wrap: nowrap;
@@ -610,40 +842,256 @@ body::before {
         overflow-x: auto;
         padding: 0 15px;
     }
+
+    .main-nav li {
+        margin: 15px 0;
+    }
+
+    .main-nav a {
+        font-size: 18px;
+    }
+
     .page-content {
         padding: 0 18px 60px;
     }
+
     .carousel-container {
         height: 60vh;
+        border-radius: 15px;
     }
+
     .carousel-caption {
         left: 20px;
         bottom: 25px;
         max-width: 85%;
     }
+
     .caption-title {
         font-size: 20px;
     }
+
     .intro-section {
         padding: 40px 20px;
+        border-radius: 15px;
     }
-    .quote-section {
-        padding: 35px 30px;
+
+    .intro-section h2 {
+        font-size: 24px;
     }
+
+    .journey-grid {
+        margin-top: 40px;
+        gap: 20px;
+    }
+
+    .journey-card {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .card-header h3 {
+        font-size: 18px;
+    }
+
+    .legacy-section {
+        margin-top: 40px;
+        gap: 15px;
+    }
+
     .legacy-card {
         padding: 20px;
+        border-radius: 12px;
+    }
+
+    .quote-section {
+        margin-top: 50px;
+        padding: 35px 30px;
+        border-radius: 15px;
+    }
+
+    .quote-section p {
+        font-size: 18px;
+    }
+
+    .site-footer {
+        padding: 35px 0;
+        background-size: 100% 80px;
+        margin-top: 30px;
+    }
+
+    .contact-info {
+        padding: 15px;
+    }
+
+    .contact-info h3 {
+        font-size: 18px;
+    }
+
+    .contact-info p {
+        font-size: 15px;
     }
 }
 
+/* 小屏幕设备 */
 @media (max-width: 480px) {
     body {
-        padding-top: 120px;
+        padding-top: 90px;
     }
+
+    .top-header {
+        padding: 10px 15px;
+    }
+
+    .title-area h1 {
+        font-size: 18px;
+        letter-spacing: 0.5px;
+    }
+
+    .logo-area .logo {
+        height: 32px;
+    }
+
+    .main-nav {
+        width: 80%;
+        padding-top: 70px;
+    }
+
+    .main-nav li {
+        margin: 12px 0;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+
+    .page-content {
+        padding: 0 12px 50px;
+    }
+
     .carousel-container {
-        height: auto;
+        height: 50vh;
     }
+
     .carousel-arrow {
         display: none;
+    }
+
+    .carousel-caption {
+        left: 15px;
+        bottom: 20px;
+        max-width: 80%;
+    }
+
+    .caption-kicker {
+        font-size: 11px;
+        padding: 3px 12px;
+        margin-bottom: 8px;
+    }
+
+    .caption-title {
+        font-size: 18px;
+    }
+
+    .intro-section {
+        padding: 30px 15px;
+        margin-top: 20px;
+    }
+
+    .intro-section h2 {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .intro-content {
+        font-size: 16px;
+    }
+
+    .invitation-box {
+        padding: 20px;
+    }
+
+    .invitation-box p {
+        font-size: 16px;
+    }
+
+    .journey-grid {
+        margin-top: 30px;
+        gap: 15px;
+    }
+
+    .journey-card {
+        padding: 15px;
+    }
+
+    .card-header h3 {
+        font-size: 16px;
+    }
+
+    .card-kicker {
+        font-size: 11px;
+    }
+
+    .card-link {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    .legacy-section {
+        margin-top: 30px;
+        gap: 12px;
+    }
+
+    .legacy-card {
+        padding: 15px;
+    }
+
+    .legacy-kicker {
+        font-size: 28px;
+    }
+
+    .legacy-desc {
+        font-size: 14px;
+    }
+
+    .quote-section {
+        margin-top: 40px;
+        padding: 25px 20px;
+    }
+
+    .quote-section p {
+        font-size: 16px;
+    }
+
+    .quote-section cite {
+        font-size: 14px;
+    }
+
+    .site-footer {
+        padding: 30px 0;
+        background-size: 100% 60px;
+        margin-top: 20px;
+    }
+
+    .contact-info {
+        padding: 12px;
+    }
+
+    .contact-info h3 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+        margin: 4px 0;
+    }
+
+    .scroll-top {
+        right: 15px;
+        bottom: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 12px;
     }
 }
 

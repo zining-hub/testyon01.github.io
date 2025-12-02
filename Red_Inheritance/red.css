@@ -1,3 +1,5 @@
+/* 基础样式复用 */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,17 +9,16 @@
 
 :root {
     --primary-color: #C8102E;
-    /* 统一主色调 */
+    /* 统一主色调（红色传承主题色） */
     --secondary-color: #333333;
     --light-gray: #F5F5F5;
     --white: #FFFFFF;
     --gray: #666666;
-    --light-red: #F8E0E2;
 }
 
 body {
     min-height: 100vh;
-    background: radial-gradient(circle at top, rgba(200, 16, 46, 0.1), transparent 60%) fixed,
+    background: radial-gradient(circle at top, rgba(200, 16, 46, 0.12), transparent 60%) fixed,
         url("../images/Greatwall.png") center/cover fixed;
     color: var(--secondary-color);
     line-height: 1.8;
@@ -178,61 +179,49 @@ body::before {
 }
 
 
-/* 与目标页面一致，仅hover变金色，active状态不额外加色 */
+/* 页面主体容器 - 调整margin-top适配固定头部 */
 
-
-/* 英雄卡片容器 - 保留原有样式，调整顶部间距 */
-
-.heroes-container {
+.header-container {
     max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 40px;
-}
-
-
-/* 英雄卡片样式 - 保留原有 */
-
-.hero-card {
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(200, 16, 46, 0.08);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.hero-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 35px rgba(200, 16, 46, 0.18);
-}
-
-.hero-img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-}
-
-.hero-info {
+    margin: 40px auto 60px;
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    border: 1px solid rgba(200, 16, 46, 0.08);
 }
 
-.hero-info h3 {
-    color: var(--secondary-color);
+
+/* 功能卡片区域 */
+
+.cards-container {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+.card {
+    flex: 1;
+    background-color: var(--white);
+    border: 3px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 50px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(200, 16, 46, 0.2);
+}
+
+.card h3 {
+    color: var(--primary-color);
     font-size: 20px;
-    margin-bottom: 8px;
-}
-
-.hero-desc {
-    color: var(--secondary-color);
-    font-size: 15px;
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    margin-bottom: 15px;
 }
 
 /* 响应式设计 */
@@ -270,34 +259,39 @@ body::before {
         font-size: 17px;
     }
 
-    .heroes-container {
-        margin: 30px auto;
-        grid-template-columns: repeat(2, 1fr);
+    .cards-container {
         gap: 25px;
-        padding: 0 20px;
     }
 
-    .hero-card {
+    .card {
+        padding: 35px;
         border-radius: 18px;
     }
 
-    .hero-img {
-        height: 280px;
-        border-radius: 18px 18px 0 0;
-    }
-
-    .hero-info {
-        padding: 25px;
-    }
-
-    .hero-info h3 {
+    .card h3 {
         font-size: 22px;
-        margin-bottom: 10px;
+        margin-bottom: 18px;
     }
 
-    .hero-desc {
+    .card p {
         font-size: 16px;
         line-height: 1.7;
+    }
+
+    .header-container {
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .header-container h1 {
+        font-size: 34px;
+        margin-bottom: 15px;
+    }
+
+    .header-container p {
+        font-size: 18px;
+        max-width: 85%;
     }
 }
 
@@ -355,76 +349,194 @@ body::before {
         font-size: 20px;
     }
 
-    .heroes-container {
-        margin: 20px auto;
-        grid-template-columns: 1fr;
-        padding: 0 15px;
+    .cards-container {
+        flex-direction: column;
+        gap: 20px;
     }
 
-    .hero-card {
+    .card {
+        padding: 30px;
+    }
+
+    .header-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+}
+
+/* 平板设备 */
+@media (max-width: 1024px) {
+    body {
+        padding-top: 90px;
+    }
+
+    .top-header {
+        padding: 12px 25px;
+    }
+
+    .title-area h1 {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    .main-nav {
+        top: 80px;
+        height: 50px;
+    }
+
+    .main-nav li {
+        margin: 0 40px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+
+    .header-container {
+        margin: 130px auto 40px;
+        padding: 20px;
+    }
+
+    .header-container h1 {
+        font-size: 32px;
+    }
+
+    .header-container p {
+        font-size: 18px;
+    }
+
+    .cards-container {
+        gap: 30px;
+        padding: 0 30px;
+    }
+
+    .card {
+        padding: 30px;
+        border-radius: 15px;
+    }
+
+    .card h2 {
+        font-size: 26px;
         margin-bottom: 20px;
     }
 
-    .hero-img {
-        height: 300px;
+    .card h3 {
+        font-size: 22px;
+    }
+
+    .card p {
+        font-size: 16px;
+    }
+
+    .card-textarea {
+        height: 120px;
+        font-size: 15px;
+    }
+
+    .file-upload-label+.file-input+.file-name {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .card-submit-btn {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .commit-input {
+        width: 95%;
+        padding: 10px;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .commit-btn {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .message-board {
+        padding: 15px;
+    }
+
+    .message-text {
+        font-size: 14px;
+    }
+
+    .user-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 8px;
+        background-color: #f0f0f0;
+        flex-shrink: 0;
+    }
+
+    .site-footer {
+        padding: 25px 0;
+    }
+
+    .contact-info {
+        padding: 15px;
+    }
+
+    .contact-info h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .contact-info p {
+        font-size: 15px;
+        margin: 4px 0;
     }
 }
 
-.hero-info {
-    padding: 15px;
+.card-textarea {
+    height: 120px;
+    font-size: 15px;
 }
 
-.hero-info h3 {
-    font-size: 20px;
+.file-upload-label+.file-input+.file-name {
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.card-submit-btn {
+    padding: 10px;
+    font-size: 15px;
+}
+
+.commit-input {
+    width: 95%;
+    padding: 10px;
+    font-size: 14px;
     margin-bottom: 8px;
 }
 
-.hero-desc {
-    font-size: 15px;
-    margin-bottom: 12px;
-}
-
-.modal {
+.commit-btn {
     padding: 10px;
-}
-
-.modal-content {
-    max-width: 100%;
-}
-
-.modal-header {
-    height: 400px;
-}
-
-.modal-body {
-    padding: 20px 15px;
-}
-
-.modal-body h2 {
-    font-size: 24px;
-    margin-bottom: 12px;
-}
-
-.modal-body .hero-meta {
-    font-size: 13px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-}
-
-.modal-body .hero-detail {
     font-size: 15px;
-    line-height: 1.7;
-    margin-bottom: 25px;
 }
 
-.modal-body .related-link {
-    padding: 8px 16px;
+.message-board {
+    padding: 15px;
+}
+
+.message-text {
     font-size: 14px;
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
+    background-color: #f0f0f0;
+    flex-shrink: 0;
 }
 
 .site-footer {
     padding: 25px 0;
-    margin-top: 40px;
 }
 
 .contact-info {
@@ -440,6 +552,7 @@ body::before {
     font-size: 15px;
     margin: 4px 0;
 }
+
 
 /* 小屏幕设备 */
 @media (max-width: 480px) {
@@ -474,149 +587,94 @@ body::before {
         font-size: 16px;
     }
 
-    .heroes-container {
+    .header-container {
+        padding: 12px;
+    }
+
+    .header-container h1 {
+        font-size: 24px;
+    }
+
+    .header-container p {
+        font-size: 14px;
+    }
+
+    .cards-container {
         gap: 15px;
         padding: 0 10px;
     }
 
-    .hero-img {
-        height: 250px;
+    .card {
+        padding: 15px;
     }
 
-    .hero-info {
-        padding: 12px;
-    }
-
-    .hero-info h3 {
-        font-size: 18px;
-    }
-
-    .hero-desc {
-        font-size: 14px;
-    }
-
-    .modal-header {
-        height: 300px;
-    }
-
-    .modal-body {
-        padding: 15px 12px;
-    }
-
-    .modal-body h2 {
+    .card h2 {
         font-size: 22px;
     }
 
-    .modal-close {
-        top: 15px;
-        right: 15px;
-        font-size: 20px;
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .card-textarea {
+        height: 80px;
+        font-size: 13px;
+    }
+
+    .file-upload-label+.file-input+.file-name {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .card-submit-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .commit-input {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .commit-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .message-board {
+        padding: 12px;
+    }
+
+    .message-text {
+        font-size: 13px;
+    }
+
+    .user-avatar {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
     }
 }
 
-
-/* 模态框样式 - 保留原有 */
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+.slide.active {
+    opacity: 1;
+    transform: translateY(0);
 }
-
-.modal-content {
-    width: 100%;
-    max-width: 700px;
-    background-color: var(--white);
-    border-radius: 8px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-}
-
-.modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    color: var(--gray);
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.modal-close:hover {
-    color: var(--primary-color);
-}
-
-.modal-header {
-    width: 100%;
-    height: 800px;
-}
-
-.modal-header-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.modal-body {
-    padding: 30px;
-}
-
-.modal-body h2 {
-    color: var(--primary-color);
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-.modal-body .hero-meta {
-    color: var(--gray);
-    font-size: 14px;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #EEEEEE;
-    padding-bottom: 15px;
-}
-
-.modal-body .hero-detail {
-    color: var(--secondary-color);
-    line-height: 2;
-    font-size: 16px;
-    margin-bottom: 30px;
-}
-
-.modal-body .related-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--secondary-color);
-    color: var(--white);
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.modal-body .related-link:hover {
-    background-color: var(--primary-color);
-}
-
-
-/* 页脚样式 - 完全复用目标页面代码 */
 
 .site-footer {
     background-color: #C81C23;
     color: #fff;
     padding: 30px 0;
+    /* 背景图片配置：宽度100%、高度100px，底部居中显示 */
     background-image: url("../images/GW03.png");
     background-size: 100% 100px;
     background-repeat: no-repeat;
     background-position: center bottom;
-    margin-top: 60px;
+    /* 调整为底部居中 */
 }
 
 .contact-info {
@@ -624,6 +682,7 @@ body::before {
     margin: 0 auto;
     text-align: left;
     padding: 20px;
+    /* 调整内边距，避免文字与背景重叠 */
 }
 
 .contact-info h3 {
@@ -636,118 +695,4 @@ body::before {
 .contact-info p {
     font-size: 17px;
     margin: 6px 0;
-}
-
-
-/* 响应式适配 - 复用目标页面逻辑 */
-
-/* 平板设备 */
-@media (max-width: 1024px) {
-    body {
-        padding-top: 90px;
-    }
-
-    .top-header {
-        height: 70px;
-        padding: 12px 20px;
-    }
-
-    .title-area h1 {
-        font-size: 28px;
-        margin-left: 25px;
-    }
-
-    .logo-area .logo {
-        height: 45px;
-    }
-
-    .main-nav {
-        top: 70px;
-        height: 45px;
-    }
-
-    .main-nav ul {
-        justify-content: space-around;
-    }
-
-    .main-nav li {
-        margin: 0 15px;
-    }
-
-    .main-nav a {
-        font-size: 16px;
-    }
-
-    .modal-header {
-        height: 300px;
-    }
-
-    .modal-body h2 {
-        font-size: 30px;
-    }
-
-    .modal-body .hero-meta {
-        font-size: 16px;
-        margin-bottom: 30px;
-        padding-bottom: 20px;
-    }
-
-    .modal-body .hero-detail {
-        font-size: 18px;
-        margin-bottom: 35px;
-    }
-
-    .hero-img {
-        height: 220px;
-    }
-}
-
-/* 手机设备 */
-@media (max-width: 768px) {
-    body {
-        padding-top: 100px;
-    }
-
-    .top-header {
-        height: 60px;
-        padding: 10px 15px;
-    }
-
-    .title-area h1 {
-        font-size: 24px;
-        margin-left: 20px;
-    }
-
-    .logo-area .logo {
-        height: 40px;
-    }
-
-    .main-nav {
-        top: 60px;
-        height: 40px;
-    }
-
-    .main-nav ul {
-        justify-content: space-around;
-    }
-
-    .main-nav li {
-        margin: 0 10px;
-    }
-
-    .main-nav a {
-        font-size: 14px;
-    }
-
-    .modal-header {
-        height: 200px;
-    }
-
-    .modal-body h2 {
-        font-size: 24px;
-    }
-
-    .hero-img {
-        height: 180px;
-    }
 }

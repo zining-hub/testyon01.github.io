@@ -392,6 +392,114 @@ body::before {
 
 
 /* 响应式设计 */
+/* 平板设备 */
+@media (max-width: 1024px) {
+    body {
+        padding-top: 90px;
+    }
+
+    .top-header {
+        padding: 12px 25px;
+    }
+
+    .title-area h1 {
+        font-size: 26px;
+        letter-spacing: 1.5px;
+    }
+
+    .search-area input[type="text"] {
+        width: 180px;
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+
+    .main-nav {
+        top: 80px;
+        height: 55px;
+    }
+
+    .main-nav li {
+        margin: 0 30px;
+    }
+
+    .main-nav a {
+        font-size: 17px;
+    }
+
+    .spirit-connotation,
+    .historical-cases,
+    .literature {
+        margin: 50px auto;
+        padding: 60px 20px;
+    }
+
+    .section-header h2 {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+
+    .connotation-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .connotation-card {
+        padding: 35px 25px;
+        border-radius: 18px;
+    }
+
+    .connotation-card h3 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .connotation-card p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .case-item {
+        border-radius: 18px;
+        padding: 30px;
+    }
+
+    .case-img {
+        border-radius: 12px;
+    }
+
+    .case-content h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .case-content p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .literature-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .literature-item {
+        padding: 30px 25px;
+        border-radius: 18px;
+    }
+
+    .literature-item h3 {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+
+    .literature-item p {
+        font-size: 15px;
+        margin-bottom: 25px;
+        line-height: 1.7;
+    }
+}
+
+/* 手机设备 */
 @media (max-width: 768px) {
     body {
         padding-top: 80px;
@@ -406,7 +514,7 @@ body::before {
         letter-spacing: 1px;
         text-align: center;
     }
-    
+
     .search-area {
         display: none;
     }
@@ -419,13 +527,14 @@ body::before {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 70%;
+        width: 75%;
         height: 100vh;
         background: var(--primary-color);
         flex-direction: column;
-        padding-top: 80px;
+        padding-top: 70px;
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
     }
 
     .main-nav.active {
@@ -435,35 +544,218 @@ body::before {
     .main-nav ul {
         flex-direction: column;
         align-items: center;
+        padding: 20px 0;
     }
 
     .main-nav li {
-        margin: 20px 0;
+        margin: 15px 0;
     }
 
     .main-nav a {
-        font-size: 20px;
+        font-size: 18px;
     }
-    
-    .spirit-connotation, .historical-cases, .literature {
-        margin: 40px auto;
+
+    .spirit-connotation,
+    .historical-cases,
+    .literature {
+        padding: 40px 0;
+        margin: 30px auto;
     }
-    
+
     .section-header h2 {
-        font-size: 24px;
+        font-size: 28px;
+        margin-bottom: 30px;
     }
-    
-    .connotation-cards, .case-list, .literature-list {
+
+    .section-header p {
+        font-size: 16px;
+        max-width: 90%;
+    }
+
+    .connotation-cards,
+    .case-list,
+    .literature-list {
         grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
     }
-    
+
+    .connotation-card {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .connotation-card h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .connotation-card p {
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
     .case-item {
         flex-direction: column;
+        border-radius: 15px;
     }
-    
+
     .case-img {
         width: 100%;
+        height: 250px;
+    }
+
+    .case-info {
+        padding: 20px;
+    }
+
+    .case-info h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .case-info p {
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
+    .case-link {
+        font-size: 14px;
+    }
+
+    .literature-item {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .literature-item h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .literature-item p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .literature-link {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .site-footer {
+        padding: 25px 0;
+    }
+
+    .contact-info {
+        padding: 15px;
+    }
+
+    .contact-info h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .contact-info p {
+        font-size: 15px;
+        margin: 4px 0;
+    }
+}
+
+/* 小屏幕设备 */
+@media (max-width: 480px) {
+    body {
+        padding-top: 110px;
+    }
+
+    .top-header {
+        height: 60px;
+        padding: 8px 15px;
+    }
+
+    .logo-area .logo {
+        height: 35px;
+    }
+
+    .title-area h1 {
+        font-size: 18px;
+        letter-spacing: 0.5px;
+    }
+
+    .main-nav {
+        width: 80%;
+        padding-top: 60px;
+    }
+
+    .main-nav li {
+        margin: 12px 0;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+
+    .spirit-connotation,
+    .historical-cases,
+    .literature {
+        padding: 30px 0;
+        margin: 20px auto;
+    }
+
+    .section-header h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .section-header p {
+        font-size: 14px;
+    }
+
+    .connotation-cards,
+    .case-list,
+    .literature-list {
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .connotation-card {
+        padding: 15px;
+    }
+
+    .connotation-card h3 {
+        font-size: 18px;
+    }
+
+    .connotation-card p {
+        font-size: 14px;
+    }
+
+    .case-img {
         height: 200px;
+    }
+
+    .case-info {
+        padding: 15px;
+    }
+
+    .case-info h3 {
+        font-size: 18px;
+    }
+
+    .case-info p {
+        font-size: 14px;
+    }
+
+    .literature-item {
+        padding: 15px;
+    }
+
+    .literature-item h3 {
+        font-size: 16px;
+    }
+
+    .literature-item p {
+        font-size: 13px;
     }
 }
 
