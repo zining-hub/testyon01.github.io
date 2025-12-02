@@ -7,12 +7,12 @@
 
 :root {
     --primary-color: #C8102E;
-    /* 统一主色调 */
     --secondary-color: #333333;
     --light-gray: #F5F5F5;
     --white: #FFFFFF;
     --gray: #666666;
     --light-red: #F8E0E2;
+    --card-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
 }
 
 body {
@@ -21,7 +21,7 @@ body {
         url("../images/Greatwall.png") center/cover fixed;
     color: var(--secondary-color);
     line-height: 1.8;
-    padding-top: 140px;
+    padding-top: 130px;
 }
 
 body::before {
@@ -41,9 +41,7 @@ body::before {
     border-radius: 999px;
 }
 
-
-/* 顶部Header样式 - 完全固定 */
-
+/* 顶部Header样式 */
 .top-header {
     display: flex;
     justify-content: space-between;
@@ -58,6 +56,37 @@ body::before {
     right: 0;
     z-index: 999;
     height: 80px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 .logo-area .logo {
@@ -105,9 +134,7 @@ body::before {
     background: #9b0f24;
 }
 
-
-/* 导航栏样式 - 固定在头部下方 */
-
+/* 导航栏样式 */
 .main-nav {
     background-color: var(--primary-color);
     padding: 10px 0;
@@ -117,6 +144,14 @@ body::before {
     right: 0;
     z-index: 998;
     height: 50px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.main-nav.mobile-open {
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .main-nav ul {
@@ -124,7 +159,7 @@ body::before {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -138,6 +173,8 @@ body::before {
     font-size: 18px;
     transition: color 0.3s, opacity 0.3s;
     opacity: 0.85;
+    display: block;
+    padding: 5px 0;
 }
 
 .main-nav a:hover,
@@ -146,135 +183,152 @@ body::before {
     opacity: 1;
 }
 
-
-/* 页面主体容器 - 调整margin-top适配固定头部 */
-
+/* 页面主体容器 */
 .header-container {
     max-width: 1200px;
     margin: 160px auto 50px;
-    /* 80px(top-header) + 50px(main-nav) + 30px间距 */
-    padding: 20px;
+    padding: 30px;
     background-color: var(--white);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    border-radius: 12px;
+    border: 1px solid rgba(200, 16, 46, 0.08);
 }
 
-
-/* 主内容区：包裹VR展厅，确保顶部间距足够 */
-
+/* 主内容区 */
 .main-content {
-    padding-top: 40px;
+    padding-top: 20px;
     width: 100%;
 }
 
-
-/* VR展厅区域：确保完全可见，无遮挡 */
-
+/* VR展厅区域 */
 .vr-section {
     max-width: 1200px;
     margin: 0 auto 60px;
-    /* 上下间距，底部与页脚分离 */
-    padding: 60px 30px 40px;
-    /* 顶部内边距充足，标题远离上沿 */
+    padding: 60px 40px;
     background-color: var(--white);
-    border-radius: 12px;
-    /* 优化圆角，更美观 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border: 1px solid #eee;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(200, 16, 46, 0.08);
+    position: relative;
+    overflow: hidden;
 }
 
+.vr-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #ff6262, var(--primary-color));
+}
 
-/* VR展厅标题：强制可见，样式醒目 */
-
+/* VR展厅标题 */
 .vr-section-title {
     text-align: center;
     color: var(--primary-color);
     font-size: 36px;
-    /* 加大字体，确保可见 */
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     position: relative;
     z-index: 10;
-    /* 层级最高，不被任何元素覆盖 */
     font-weight: 700;
     letter-spacing: 3px;
-    /* 增加字间距，更醒目 */
     line-height: 1.5;
-    /* 行高正常，避免裁剪 */
 }
-
-
-/* 标题下划线：强化视觉 */
 
 .vr-section-title::after {
     content: '';
     display: block;
     width: 120px;
     height: 5px;
-    background-color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color), #ff6262);
     margin: 20px auto 0;
     border-radius: 3px;
 }
 
-
-/* VR卡片容器：布局合理，无挤压 */
-
+/* VR卡片容器 */
 .vr-cards-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     justify-content: center;
-    flex-wrap: wrap;
-    /* 适配小屏幕，自动换行 */
 }
 
-
 /* VR卡片样式 */
-
 .vr-card {
-    width: 280px;
-    flex-shrink: 0;
     background-color: var(--white);
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     text-decoration: none;
     color: inherit;
+    position: relative;
+    border: 1px solid rgba(200, 16, 46, 0.1);
+}
+
+.vr-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), #ff6262);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.vr-card:hover::before {
+    transform: scaleX(1);
 }
 
 .vr-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(200, 16, 46, 0.15);
+    box-shadow: 0 15px 35px rgba(200, 16, 46, 0.2);
 }
 
 .vr-card img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
-    border-bottom: 3px solid var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.vr-card:hover img {
+    transform: scale(1.05);
 }
 
 .vr-card-info {
-    padding: 20px;
+    padding: 25px;
 }
 
 .vr-card-info h3 {
     color: var(--primary-color);
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .vr-card-info p {
     color: var(--gray);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .vr-link-text {
     color: var(--primary-color);
-    font-weight: bold;
+    font-weight: 600;
     font-size: 15px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.vr-link-text::after {
+    content: "→";
+    margin-left: 8px;
     transition: transform 0.2s ease;
 }
 
@@ -282,9 +336,11 @@ body::before {
     transform: translateX(5px);
 }
 
+.vr-card:hover .vr-link-text::after {
+    transform: translateX(3px);
+}
 
 /* 更多展厅卡片 */
-
 .vr-card-more {
     display: flex;
     flex-direction: column;
@@ -293,6 +349,7 @@ body::before {
     text-align: center;
     background: linear-gradient(135deg, #f9f9f9, #fff);
     border: 2px dashed var(--primary-color);
+    min-height: 350px;
 }
 
 .vr-card-more .vr-card-info {
@@ -301,34 +358,37 @@ body::before {
 
 .vr-card-more:hover {
     background: linear-gradient(135deg, #fff, #f9f9f9);
+    transform: translateY(-5px);
 }
 
+.vr-card-more .vr-link-text {
+    color: var(--primary-color);
+    font-size: 18px;
+}
 
 /* 页脚样式 */
-
 .site-footer {
     background-color: var(--primary-color);
     color: var(--white);
-    padding: 40px 0 60px;
-    /* 底部内边距，适配背景图 */
+    padding: 45px 0 60px;
     background-image: url("../images/GW03.png");
-    background-size: 100% 80px;
+    background-size: 100% 100px;
     background-repeat: no-repeat;
     background-position: center bottom;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .contact-info {
     max-width: 400px;
     margin: 0 auto;
     text-align: left;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 .contact-info h3 {
     font-size: 20px;
     margin-bottom: 15px;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid #FFD700;
     padding-bottom: 10px;
 }
 
@@ -337,86 +397,325 @@ body::before {
     margin: 6px 0;
 }
 
+/* 通知样式 */
+.notification {
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    z-index: 10000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
-/* 响应式设计 */
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.notification.warning {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+
+/* 平板端适配 */
+@media (max-width: 1024px) {
+    .main-nav li {
+        margin: 0 40px;
+    }
+    
+    .title-area h1 {
+        font-size: 28px;
+        letter-spacing: 3px;
+    }
+    
+    .vr-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+    }
+    
+    .vr-section {
+        padding: 50px 30px;
+    }
+    
+    .vr-section-title {
+        font-size: 32px;
+    }
+}
+
+/* 手机端适配 */
 @media (max-width: 768px) {
     body {
-        padding-top: 80px;
+        padding-top: 130px;
     }
 
     .top-header {
-        padding: 10px 20px;
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        padding: 10px 15px;
     }
 
     .title-area h1 {
-        font-size: 16px;
+        font-size: 18px;
         letter-spacing: 1px;
         text-align: center;
+        line-height: 1.3;
     }
-    
+
+    .logo-area .logo {
+        height: 36px;
+    }
+
     .search-area {
         display: none;
     }
 
     .mobile-menu-btn {
         display: flex;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     .main-nav {
         position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background: var(--primary-color);
-        flex-direction: column;
-        padding-top: 80px;
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-        height: auto;
-        bottom: 0;
+        top: 80px;
+        height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
     }
 
-    .main-nav.active {
-        right: 0;
+    .main-nav.mobile-open {
+        height: auto;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
     }
 
     .main-nav ul {
         flex-direction: column;
         align-items: center;
+        padding: 20px 0;
     }
 
     .main-nav li {
-        margin: 20px 0;
+        margin: 8px 0;
+        width: 100%;
+        text-align: center;
     }
 
     .main-nav a {
-        font-size: 20px;
+        font-size: 16px;
+        padding: 12px 0;
+        width: 100%;
     }
-    
-    .vr-cards-container {
-        grid-template-columns: 1fr;
-        padding: 0 15px;
+
+    .header-container {
+        margin: 140px auto 40px;
+        padding: 20px 15px;
     }
-    
+
+    .main-content {
+        padding-top: 15px;
+    }
+
     .vr-section {
-        padding: 30px 15px;
-        margin-bottom: 30px;
+        padding: 40px 20px;
+        margin-bottom: 40px;
     }
-    
+
     .vr-section-title {
         font-size: 28px;
-        margin-bottom: 30px;
+        margin-bottom: 35px;
+        letter-spacing: 2px;
     }
-    
-    .main-content {
-        padding-top: 20px;
+
+    .vr-cards-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0;
+    }
+
+    .vr-card {
+        max-width: 100%;
+    }
+
+    .vr-card img {
+        height: 180px;
+    }
+
+    .vr-card-info {
+        padding: 20px;
+    }
+
+    .vr-card-info h3 {
+        font-size: 20px;
+    }
+
+    .vr-card-info p {
+        font-size: 14px;
+    }
+
+    .notification {
+        top: 100px;
+        right: 15px;
+        left: 15px;
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+
+    .site-footer {
+        padding: 30px 0;
+    }
+
+    .contact-info {
+        padding: 15px;
+    }
+
+    .contact-info h3 {
+        font-size: 18px;
+    }
+
+    .contact-info p {
+        font-size: 15px;
     }
 }
 
+/* 小屏手机适配 */
+@media (max-width: 480px) {
+    body {
+        padding-top: 120px;
+    }
 
-/* 复用样式（不影响当前页面，保留供其他页面使用） */
+    .top-header {
+        padding: 8px 10px;
+    }
 
+    .title-area h1 {
+        font-size: 16px;
+        letter-spacing: 0.5px;
+    }
+
+    .logo-area .logo {
+        height: 32px;
+    }
+
+    .mobile-menu-btn {
+        width: 25px;
+        height: 18px;
+    }
+
+    .vr-section {
+        padding: 30px 15px;
+    }
+
+    .vr-section-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .vr-card img {
+        height: 160px;
+    }
+
+    .vr-card-info {
+        padding: 15px;
+    }
+
+    .vr-card-info h3 {
+        font-size: 18px;
+    }
+
+    .vr-card-more {
+        min-height: 300px;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+}
+
+/* 横屏适配 */
+@media (max-width: 768px) and (orientation: landscape) {
+    body {
+        padding-top: 100px;
+    }
+
+    .top-header {
+        height: 60px;
+        flex-direction: row;
+    }
+
+    .main-nav {
+        top: 60px;
+    }
+
+    .vr-cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .vr-card img {
+        height: 150px;
+    }
+}
+
+/* 加载动画 */
+.vr-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.vr-card:nth-child(1) { animation-delay: 0.1s; }
+.vr-card:nth-child(2) { animation-delay: 0.2s; }
+.vr-card:nth-child(3) { animation-delay: 0.3s; }
+.vr-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+    .vr-card:hover {
+        transform: none;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .vr-card:hover img {
+        transform: none;
+    }
+    
+    .vr-card:hover .vr-link-text {
+        transform: none;
+    }
+}
+
+/* 无障碍优化 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 复用样式（保留供其他页面使用） */
 .commit-input {
     width: 100%;
     padding: 12px;
@@ -491,3 +790,16 @@ body::before {
     font-size: 15px;
     line-height: 1.7;
 }
+
+/* 强制显示所有导航项 */
+.main-nav li {
+    display: block !important;
+    margin: 0 20px !important;
+}
+
+/* 确保导航栏有足够高度 */
+.main-nav {
+    height: auto !important;
+    min-height: 50px !important;
+}
+

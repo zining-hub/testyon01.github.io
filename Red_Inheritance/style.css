@@ -1,5 +1,4 @@
 /* 基础样式复用 */
-
 * {
     margin: 0;
     padding: 0;
@@ -9,11 +8,12 @@
 
 :root {
     --primary-color: #C8102E;
-    /* 统一主色调（红色传承主题色） */
     --secondary-color: #333333;
     --light-gray: #F5F5F5;
     --white: #FFFFFF;
     --gray: #666666;
+    --light-red: #F8E0E2;
+    --card-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
 }
 
 body {
@@ -22,7 +22,7 @@ body {
         url("../images/Greatwall.png") center/cover fixed;
     color: var(--secondary-color);
     line-height: 1.8;
-    padding-top: 140px;
+    padding-top: 130px;
 }
 
 body::before {
@@ -42,9 +42,7 @@ body::before {
     border-radius: 999px;
 }
 
-
-/* 顶部Header样式 - 完全固定 */
-
+/* 顶部Header样式 */
 .top-header {
     display: flex;
     justify-content: space-between;
@@ -137,9 +135,7 @@ body::before {
     background: #9b0f24;
 }
 
-
-/* 导航栏样式 - 固定在头部下方 */
-
+/* 导航栏样式 */
 .main-nav {
     background-color: var(--primary-color);
     padding: 10px 0;
@@ -149,6 +145,14 @@ body::before {
     right: 0;
     z-index: 998;
     height: 50px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.main-nav.mobile-open {
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .main-nav ul {
@@ -170,6 +174,8 @@ body::before {
     font-size: 18px;
     transition: color 0.3s, opacity 0.3s;
     opacity: 0.85;
+    display: block;
+    padding: 5px 0;
 }
 
 .main-nav a:hover,
@@ -178,159 +184,102 @@ body::before {
     opacity: 1;
 }
 
-
-/* 页面主体容器 - 调整margin-top适配固定头部 */
-
+/* 页面主体容器 */
 .header-container {
     max-width: 1200px;
     margin: 40px auto 60px;
-    padding: 20px;
+    padding: 30px;
     background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow);
     border-radius: 18px;
     border: 1px solid rgba(200, 16, 46, 0.08);
 }
 
-
 /* 功能卡片区域 */
-
 .cards-container {
-    display: flex;
-    gap: 50px;
-    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
 }
 
 .card {
-    flex: 1;
     background-color: var(--white);
     border: 3px solid var(--primary-color);
-    border-radius: 8px;
-    padding: 50px;
+    border-radius: 12px;
+    padding: 40px 30px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #ff6262);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(200, 16, 46, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(200, 16, 46, 0.2);
 }
 
 .card h3 {
     color: var(--primary-color);
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    body {
-        padding-top: 80px;
-    }
-
-    .top-header {
-        padding: 10px 20px;
-    }
-
-    .title-area h1 {
-        font-size: 16px;
-        letter-spacing: 1px;
-        text-align: center;
-    }
-    
-    .search-area {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: flex;
-    }
-
-    .main-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background: var(--primary-color);
-        flex-direction: column;
-        padding-top: 80px;
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-    }
-
-    .main-nav.active {
-        right: 0;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .main-nav li {
-        margin: 20px 0;
-    }
-
-    .main-nav a {
-        font-size: 20px;
-    }
-    
-    .cards-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .card {
-        padding: 30px;
-    }
-    
-    .header-container {
-        margin: 20px auto;
-        padding: 15px;
-    }
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .card img {
     width: 100%;
     max-width: 200px;
     height: auto;
-    margin: 10px auto;
+    margin: 15px auto;
     display: block;
-    border-radius: 4px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
 }
 
+.card img:hover {
+    transform: scale(1.05);
+}
 
-/* --- 交互卡片样式 --- */
-
+/* 交互卡片样式 */
 .interactive-card {
     justify-content: flex-start;
-    /* 内容从顶部开始排列 */
+    min-height: 400px;
 }
 
 .card-textarea {
-    width: 95%;
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
     resize: vertical;
-    /* 允许用户垂直拖动调整大小 */
-    font-size: 14px;
+    font-size: 15px;
     font-family: inherit;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-textarea:focus {
     outline: none;
     border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
 }
 
 .file-upload-wrapper {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
@@ -338,94 +287,133 @@ body::before {
     display: block;
     font-size: 14px;
     color: var(--gray);
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
 .file-input {
     display: none;
-    /* 隐藏原始的丑陋文件输入框 */
 }
 
-.file-upload-label+.file-input+.file-name {
+.file-name {
     display: inline-block;
-    padding: 8px 12px;
-    border: 1px dashed #ccc;
-    border-radius: 4px;
+    padding: 10px 15px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
     background-color: #f9f9f9;
     font-size: 14px;
     color: #888;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
 }
 
-.file-input:focus+.file-name,
-.file-upload-label:hover+.file-input+.file-name {
+.file-name:hover {
     border-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--primary-color);
+    background-color: rgba(200, 16, 46, 0.05);
 }
 
 .card-submit-btn {
     width: 100%;
-    padding: 12px;
-    background-color: var(--primary-color);
+    padding: 15px;
+    background: linear-gradient(135deg, var(--primary-color), #A00E26);
     color: var(--white);
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-submit-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.card-submit-btn:hover::before {
+    left: 100%;
 }
 
 .card-submit-btn:hover {
-    background-color: #A00E26;
-    /* 加深红色hover效果 */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(200, 16, 46, 0.3);
 }
 
+.card-submit-btn:active {
+    transform: translateY(0);
+}
 
-/* --- 传承承诺卡片样式 --- */
-
+/* 传承承诺卡片样式 */
 .commit-input {
-    width: 95%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    font-size: 14px;
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .commit-input:focus {
     outline: none;
     border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
 }
 
 .commit-btn {
     width: 100%;
-    padding: 12px;
-    background-color: var(--primary-color);
+    padding: 15px;
+    background: linear-gradient(135deg, var(--primary-color), #A00E26);
     color: var(--white);
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.commit-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.commit-btn:hover::before {
+    left: 100%;
 }
 
 .commit-btn:hover {
-    background-color: #A00E26;
-    /* 加深红色hover效果 */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(200, 16, 46, 0.3);
 }
 
-
 /* 留言板 */
-
 .message-board {
     background-color: var(--white);
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 30px;
     position: relative;
     border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .wave-decoration {
@@ -433,9 +421,9 @@ body::before {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 10px;
-    background: linear-gradient(90deg, var(--primary-color), #f00, var(--primary-color));
-    border-radius: 0 0 8px 8px;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-color), #ff6262, var(--primary-color));
+    border-radius: 0 0 12px 12px;
 }
 
 .message-content {
@@ -447,80 +435,69 @@ body::before {
 .message-header {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .user-avatar {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    margin-right: 10px;
-    background-color: #f0f0f0;
+    margin-right: 12px;
+    background: linear-gradient(135deg, var(--primary-color), #ff6262);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .message-text {
     color: var(--gray);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7;
 }
 
-
-/* 响应式适配（手机端） */
-
-@media (max-width: 768px) {
-    /* 头部响应式调整 */
-    .top-header {
-        padding: 10px 15px;
-        height: 70px;
-    }
-    .title-area h1 {
-        font-size: 24px;
-        margin-left: 20px;
-    }
-    .logo-area .logo {
-        height: 40px;
-    }
-    .main-nav {
-        top: 70px;
-        height: 45px;
-    }
-    .main-nav li {
-        margin: 0 20px;
-    }
-    .main-nav a {
-        font-size: 16px;
-    }
-    /* 主体内容响应式调整 */
-    .header-container {
-        margin: 145px auto 30px;
-        /* 70px(top-header) + 45px(main-nav) + 30px间距 */
-        padding: 15px;
-    }
-    .cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card {
-        width: 90%;
-        margin-bottom: 15px;
-    }
+/* 通知样式 */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    z-index: 10000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.slide.active {
+.notification.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
+.notification.success {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.notification.warning {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+
+/* 页脚样式 */
 .site-footer {
     background-color: #C81C23;
     color: #fff;
-    padding: 30px 0;
-    /* 背景图片配置：宽度100%、高度100px，底部居中显示 */
+    padding: 45px 0;
     background-image: url("../images/GW03.png");
     background-size: 100% 100px;
     background-repeat: no-repeat;
     background-position: center bottom;
-    /* 调整为底部居中 */
+    margin-top: 60px;
 }
 
 .contact-info {
@@ -528,7 +505,6 @@ body::before {
     margin: 0 auto;
     text-align: left;
     padding: 20px;
-    /* 调整内边距，避免文字与背景重叠 */
 }
 
 .contact-info h3 {
@@ -542,3 +518,309 @@ body::before {
     font-size: 17px;
     margin: 6px 0;
 }
+
+/* 平板端适配 */
+@media (max-width: 1024px) {
+    .main-nav li {
+        margin: 0 40px;
+    }
+    
+    .title-area h1 {
+        font-size: 28px;
+        letter-spacing: 3px;
+    }
+    
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+    
+    .header-container {
+        padding: 25px;
+    }
+}
+
+/* 手机端适配 */
+@media (max-width: 768px) {
+    body {
+        padding-top: 130px;
+    }
+
+    .top-header {
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        padding: 10px 15px;
+    }
+
+    .title-area h1 {
+        font-size: 18px;
+        letter-spacing: 1px;
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    .logo-area .logo {
+        height: 36px;
+    }
+
+    .search-area {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 80px;
+        height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .main-nav.mobile-open {
+        height: auto;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .main-nav li {
+        margin: 8px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+        padding: 12px 0;
+        width: 100%;
+    }
+
+    .header-container {
+        margin: 30px auto 40px;
+        padding: 20px 15px;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .card {
+        padding: 30px 20px;
+        min-height: auto;
+    }
+
+    .card h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .card-textarea {
+        height: 100px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .commit-input {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .card-submit-btn,
+    .commit-btn {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .file-name {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .message-board {
+        padding: 20px 15px;
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .message-text {
+        font-size: 15px;
+    }
+
+    .notification {
+        right: 15px;
+        left: 15px;
+        top: 15px;
+        font-size: 14px;
+    }
+
+    .site-footer {
+        padding: 30px 0;
+    }
+
+    .contact-info {
+        padding: 15px;
+    }
+
+    .contact-info h3 {
+        font-size: 18px;
+    }
+
+    .contact-info p {
+        font-size: 15px;
+    }
+}
+
+/* 小屏手机适配 */
+@media (max-width: 480px) {
+    body {
+        padding-top: 120px;
+    }
+
+    .top-header {
+        padding: 8px 10px;
+    }
+
+    .title-area h1 {
+        font-size: 16px;
+        letter-spacing: 0.5px;
+    }
+
+    .logo-area .logo {
+        height: 32px;
+    }
+
+    .mobile-menu-btn {
+        width: 25px;
+        height: 18px;
+    }
+
+    .header-container {
+        margin: 20px auto 30px;
+        padding: 15px 10px;
+    }
+
+    .card {
+        padding: 25px 15px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card-textarea {
+        height: 90px;
+        padding: 10px;
+    }
+
+    .commit-input {
+        padding: 10px;
+    }
+
+    .card-submit-btn,
+    .commit-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .message-board {
+        padding: 15px 10px;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+}
+
+/* 横屏适配 */
+@media (max-width: 768px) and (orientation: landscape) {
+    body {
+        padding-top: 100px;
+    }
+
+    .top-header {
+        height: 60px;
+        flex-direction: row;
+    }
+
+    .main-nav {
+        top: 60px;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* 加载动画 */
+.card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+    .card:hover {
+        transform: none;
+        box-shadow: var(--card-shadow);
+    }
+    
+    .card-submit-btn:hover,
+    .commit-btn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* 无障碍优化 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 强制显示所有导航项 */
+.main-nav li {
+    display: block !important;
+    margin: 0 20px !important;
+}
+
+/* 确保导航栏有足够高度 */
+.main-nav {
+    height: auto !important;
+    min-height: 50px !important;
+}
+
