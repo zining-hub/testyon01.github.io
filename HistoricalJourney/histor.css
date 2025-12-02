@@ -485,17 +485,22 @@ body::before {
         display: flex;
         flex-direction: column;
         padding: 20px 15px;
+        justify-content: center;
+        align-items: center;
     }
 
     .slide.odd .text-box,
     .slide.even .text-box {
         position: static;
-        margin: 15px auto;
-        width: 100%;
-        height: auto;
-        max-width: none;
-        background-color: rgba(0, 0, 0, 0.7);
+        margin: 0 auto 30px auto;
+        width: 90%;
+        max-width: 90%;
+        max-height: 250px;
+        background-color: rgba(0, 0, 0, 0.8);
         padding: 15px;
+        overflow-y: auto;
+        box-sizing: border-box;
+        align-self: center;
     }
 
     .slide.odd .text-box h2,
@@ -503,26 +508,36 @@ body::before {
         font-size: 22px;
         text-align: center;
         margin-bottom: 10px;
+        color: #fff;
     }
 
     .slide.odd .text-box p,
     .slide.even .text-box p {
         font-size: 16px;
         line-height: 1.6;
+        color: #fff;
+        margin-bottom: 8px;
     }
 
     .slide.odd .img-box,
     .slide.even .img-box {
         position: static;
-        margin: 15px auto;
+        margin: 0 auto;
         transform: none;
-        width: 100%;
+        width: auto;
+        max-width: 100%;
+        display: inline-block;
     }
 
     .img-box img {
-        width: 100%;
+        width: auto;
         height: auto;
-        border-radius: 8px;
+        max-width: 100%;
+        max-height: 300px;
+        object-fit: contain;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
     }
 }
 
@@ -630,43 +645,61 @@ body::before {
     opacity: 0.9;
 }
 
-/* 新布局：文字盒和图片上下排列，避免重叠 */
+/* 优化布局：文字盒和图片上下排列，确保垂直分布且居中 */
 
 .slide {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 24px 16px;
+    min-height: 100vh;
+    width: 100%;
 }
 
+/* 基础文字框样式 */
 .slide .text-box {
     position: static;
     width: 100%;
-    max-width: 620px;
-    max-height: 220px;
-    background-color: rgba(0, 0, 0, 0.7);
+    max-width: 100%;
+    max-height: 350px;
+    background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
-    margin: 0 auto 16px;
-    padding: 16px;
-    font-size: 14px;
-    line-height: 1.5;
+    margin: 0 auto 24px auto;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.6;
     overflow-y: auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 .slide .text-box h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
+/* 基础图片框样式 */
 .slide .img-box {
     position: static;
     margin: 0 auto;
+    width: auto;
+    max-width: 100%;
+    display: inline-block;
+    text-align: center;
 }
 
 .slide .img-box img {
-    max-width: 100%;
+    width: auto;
     height: auto;
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
 }
 
 
@@ -686,15 +719,42 @@ body::before {
 }
 
 
-/* 滚动条美化 */
+/* 滚动条美化 - 优化移动端显示 */
 
 .text-box::-webkit-scrollbar {
     width: 8px;
 }
 
-.text-box::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5);
+.text-box::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
+}
+
+.text-box::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+}
+
+.text-box::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* 确保所有文字框在移动端都有良好的滚动体验 */
+@media (max-width: 768px) {
+
+    .slide.odd .text-box,
+    .slide.even .text-box {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.7) rgba(255, 255, 255, 0.1);
+        /* 确保文字不会被裁剪 */
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+        /* 增加内边距确保文字不会紧贴边缘 */
+        padding: 20px 15px;
+    }
 }
 
 

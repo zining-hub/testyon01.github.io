@@ -25,7 +25,7 @@ body {
         url("../images/Greatwall.png") center/cover fixed;
     color: var(--secondary-color);
     line-height: 1.8;
-    padding-top: 130px;
+    padding-top: 140px;
 }
 
 body::before {
@@ -45,6 +45,7 @@ body::before {
     border-radius: 6px;
 }
 
+/* 桌面端头部样式 */
 .top-header {
     display: flex;
     justify-content: space-between;
@@ -137,6 +138,7 @@ body::before {
     background: #9b0f24;
 }
 
+/* 桌面端导航样式 */
 .main-nav {
     background: var(--primary-color);
     padding: 10px 0;
@@ -146,14 +148,6 @@ body::before {
     right: 0;
     z-index: 998;
     height: 50px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.main-nav.mobile-open {
-    height: auto;
-    max-height: 300px;
-    overflow-y: auto;
 }
 
 .main-nav ul {
@@ -175,8 +169,6 @@ body::before {
     font-size: 18px;
     transition: color 0.3s, opacity 0.3s;
     opacity: 0.85;
-    display: block;
-    padding: 5px 0;
 }
 
 .main-nav a:hover,
@@ -185,6 +177,7 @@ body::before {
     opacity: 1;
 }
 
+/* 桌面端页面内容样式 */
 .page-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -432,7 +425,7 @@ body::before {
     opacity: 1;
 }
 
-.journey-card > * {
+.journey-card>* {
     position: relative;
     z-index: 2;
 }
@@ -582,204 +575,221 @@ body::before {
     transform: translateY(-6px);
 }
 
-/* 平板端适配 */
+/* 平板设备（布局稍微压缩，但导航仍保持横向） */
 @media (max-width: 1024px) {
-    .main-nav li {
-        margin: 0 40px;
-    }
-    
-    .title-area h1 {
-        font-size: 28px;
-        letter-spacing: 3px;
-    }
-    
-    .journey-grid {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 25px;
-    }
-}
-
-/* 手机端适配 */
-@media (max-width: 768px) {
     body {
-        padding-top: 130px;
+        padding-top: 90px;
     }
 
     .top-header {
-        flex-direction: column;
-        gap: 10px;
-        height: auto;
-        padding: 10px 15px;
+        padding: 15px 30px;
     }
 
     .title-area h1 {
-        font-size: 18px;
-        letter-spacing: 1px;
-        text-align: center;
-        line-height: 1.3;
+        font-size: 28px;
+        letter-spacing: 1.5px;
     }
 
     .logo-area .logo {
-        height: 36px;
+        height: 42px;
     }
 
-    .search-area {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: flex;
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
+    .search-area input[type="text"] {
+        width: 180px;
+        padding: 8px 12px;
+        font-size: 15px;
     }
 
     .main-nav {
-        position: fixed;
-        top: 80px;
-        height: 0;
-        overflow: hidden;
-        transition: all 0.3s ease;
-    }
-
-    .main-nav.mobile-open {
-        height: auto;
-        max-height: calc(100vh - 80px);
-        overflow-y: auto;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
+        top: 85px;
+        height: 55px;
     }
 
     .main-nav li {
-        margin: 8px 0;
-        width: 100%;
-        text-align: center;
+        margin: 0 30px;
     }
 
     .main-nav a {
-        font-size: 16px;
-        padding: 12px 0;
-        width: 100%;
+        font-size: 17px;
     }
 
     .page-content {
-        padding: 0 15px 60px;
+        padding: 0 15px 70px;
     }
 
     .carousel-container {
-        height: 50vh;
-        min-height: 280px;
+        height: 320px;
+        border-radius: 20px;
     }
 
     .carousel-caption {
-        left: 20px;
-        bottom: 20px;
-        max-width: 90%;
+        left: 40px;
+        bottom: 50px;
+        max-width: 500px;
     }
 
     .caption-title {
-        font-size: 18px;
+        font-size: 26px;
     }
 
-    .caption-kicker {
-        font-size: 11px;
-        padding: 3px 10px;
-        margin-bottom: 8px;
-    }
-
-    .carousel-arrow {
-        width: 40px;
-        height: 40px;
-    }
-
-    .carousel-arrow img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .prev-arrow {
-        left: 10px;
-    }
-
-    .next-arrow {
-        right: 10px;
-    }
-
-    .intro-section {
-        padding: 30px 20px;
-        margin-top: 20px;
+    .intro-section,
+    .journey-grid,
+    .legacy-section {
+        padding: 25px 0;
     }
 
     .intro-section h2 {
-        font-size: 24px;
-        margin-bottom: 25px;
+        font-size: 32px;
+        margin-bottom: 20px;
     }
 
-    .intro-content {
-        font-size: 16px;
-    }
-
-    .invitation-box {
-        padding: 20px;
-        margin-top: 20px;
-    }
-
-    .invitation-box p {
-        font-size: 16px;
-    }
-
-    .journey-grid {
-        margin-top: 40px;
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .intro-section p {
+        font-size: 17px;
+        line-height: 1.8;
+        max-width: 90%;
     }
 
     .journey-card {
         padding: 25px 20px;
+        border-radius: 18px;
+    }
+
+    .journey-card h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .journey-card p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .legacy-section {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+    }
+
+    .legacy-card {
+        padding: 30px 25px;
+        border-radius: 18px;
+    }
+
+    .legacy-kicker {
+        font-size: 36px;
+    }
+
+    .legacy-desc {
+        font-size: 16px;
+    }
+}
+
+/* 手机设备：与纪念展馆统一的顶部+导航样式 */
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+        overflow-x: hidden;
+    }
+
+    .top-header {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 0;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        padding: 4px 0;
+        color: var(--white);
+    }
+
+    .page-content {
+        padding: 0 18px 60px;
+    }
+
+    /* 移动端内容样式 */
+    .carousel-container {
+        height: 60vh;
+        border-radius: 15px;
+    }
+
+    .carousel-img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    .carousel-caption {
+        left: 20px;
+        bottom: 25px;
+        max-width: 85%;
+    }
+
+    .caption-title {
+        font-size: 20px;
+    }
+
+    .intro-section {
+        padding: 40px 20px;
+        border-radius: 15px;
+    }
+
+    .intro-section h2 {
+        font-size: 24px;
+    }
+
+    .journey-grid {
+        margin-top: 40px;
+        gap: 20px;
+    }
+
+    .journey-card {
+        padding: 20px;
     }
 
     .card-header h3 {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .legacy-section {
         margin-top: 40px;
-        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
 
     .legacy-card {
-        padding: 20px 15px;
-    }
-
-    .legacy-kicker {
-        font-size: 24px;
-    }
-
-    .legacy-desc {
-        font-size: 13px;
+        padding: 20px;
+        border-radius: 12px;
     }
 
     .quote-section {
-        margin-top: 40px;
-        padding: 30px 20px;
+        margin-top: 50px;
+        padding: 35px 30px;
+        border-radius: 15px;
     }
 
     .quote-section p {
         font-size: 18px;
     }
 
-    .quote-section cite {
-        font-size: 14px;
-    }
-
     .site-footer {
-        padding: 30px 0;
+        padding: 35px 0;
+        background-size: 100% 80px;
+        margin-top: 30px;
     }
 
     .contact-info {
@@ -793,124 +803,159 @@ body::before {
     .contact-info p {
         font-size: 15px;
     }
-
-    .scroll-top {
-        width: 45px;
-        height: 45px;
-        right: 15px;
-        bottom: 15px;
-        font-size: 12px;
-    }
 }
 
-/* 小屏手机适配 */
+/* 小屏幕设备 */
 @media (max-width: 480px) {
     body {
-        padding-top: 120px;
+        padding-top: 0;
     }
 
-    .top-header {
-        padding: 8px 10px;
+    .main-nav {
+        padding-top: 10px;
     }
 
-    .title-area h1 {
-        font-size: 16px;
-        letter-spacing: 0.5px;
+    .main-nav li {
+        margin: 5px 0;
     }
 
-    .logo-area .logo {
-        height: 32px;
+    .main-nav a {
+        font-size: 14px;
     }
 
-    .mobile-menu-btn {
-        width: 25px;
-        height: 18px;
+    .page-content {
+        padding: 0 12px 50px;
     }
 
     .carousel-container {
-        height: 45vh;
-        min-height: 250px;
+        height: 50vh;
+    }
+
+    .carousel-img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
     }
 
     .carousel-arrow {
         display: none;
     }
 
-    .carousel-dots {
-        bottom: 15px;
+    .carousel-caption {
+        left: 15px;
+        bottom: 20px;
+        max-width: 80%;
     }
 
-    .carousel-dots button {
-        width: 10px;
-        height: 10px;
+    .caption-kicker {
+        font-size: 11px;
+        padding: 3px 12px;
+        margin-bottom: 8px;
     }
 
-    .carousel-dots button.active {
-        width: 25px;
+    .caption-title {
+        font-size: 18px;
     }
 
     .intro-section {
-        padding: 25px 15px;
+        padding: 30px 15px;
+        margin-top: 20px;
     }
 
     .intro-section h2 {
-        font-size: 22px;
+        font-size: 20px;
+        margin-bottom: 30px;
     }
 
     .intro-content {
-        font-size: 15px;
+        font-size: 16px;
+    }
+
+    .invitation-box {
+        padding: 20px;
+    }
+
+    .invitation-box p {
+        font-size: 16px;
+    }
+
+    .journey-grid {
+        margin-top: 30px;
+        gap: 15px;
     }
 
     .journey-card {
-        padding: 20px 15px;
+        padding: 15px;
+    }
+
+    .card-header h3 {
+        font-size: 16px;
+    }
+
+    .card-kicker {
+        font-size: 11px;
+    }
+
+    .card-link {
+        font-size: 14px;
+        margin-top: 15px;
     }
 
     .legacy-section {
-        grid-template-columns: 1fr;
+        margin-top: 30px;
+        gap: 12px;
+    }
+
+    .legacy-card {
+        padding: 15px;
+    }
+
+    .legacy-kicker {
+        font-size: 28px;
+    }
+
+    .legacy-desc {
+        font-size: 14px;
     }
 
     .quote-section {
-        padding: 25px 15px;
+        margin-top: 40px;
+        padding: 25px 20px;
     }
 
     .quote-section p {
         font-size: 16px;
     }
 
+    .quote-section cite {
+        font-size: 14px;
+    }
+
+    .site-footer {
+        padding: 30px 0;
+        background-size: 100% 60px;
+        margin-top: 20px;
+    }
+
     .contact-info {
-        text-align: center;
-    }
-}
-
-/* 横屏适配 */
-@media (max-width: 768px) and (orientation: landscape) {
-    body {
-        padding-top: 100px;
+        padding: 12px;
     }
 
-    .top-header {
-        height: 60px;
-        flex-direction: row;
+    .contact-info h3 {
+        font-size: 16px;
+        margin-bottom: 12px;
     }
 
-    .main-nav {
-        top: 60px;
+    .contact-info p {
+        font-size: 14px;
+        margin: 4px 0;
     }
 
-    .carousel-container {
-        height: 60vh;
+    .scroll-top {
+        right: 15px;
+        bottom: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 12px;
     }
-}
-
-
-/* 强制显示所有导航项 */
-.main-nav li {
-    display: block !important;
-    margin: 0 20px !important;
-}
-
-/* 确保导航栏有足够高度 */
-.main-nav {
-    height: auto !important;
-    min-height: 50px !important;
 }

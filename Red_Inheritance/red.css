@@ -296,57 +296,42 @@ body::before {
 }
 
 /* 手机设备 */
+/* 全站统一：手机端顶部与"纪念展馆"页面一致，仅保留红色导航条 */
 @media (max-width: 768px) {
     body {
-        padding-top: 80px;
+        padding-top: 0;
+        overflow-x: hidden;
     }
 
     .top-header {
-        padding: 10px 20px;
-    }
-
-    .title-area h1 {
-        font-size: 16px;
-        letter-spacing: 1px;
-        text-align: center;
-    }
-
-    .search-area {
         display: none;
     }
 
     .mobile-menu-btn {
-        display: flex;
+        display: none;
     }
 
     .main-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background: var(--primary-color);
-        flex-direction: column;
-        padding-top: 80px;
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .main-nav.active {
-        right: 0;
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
     }
 
     .main-nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 0;
     }
 
     .main-nav li {
-        margin: 20px 0;
+        margin: 0;
     }
 
     .main-nav a {
-        font-size: 20px;
+        font-size: 14px;
+        padding: 4px 0;
     }
 
     .cards-container {

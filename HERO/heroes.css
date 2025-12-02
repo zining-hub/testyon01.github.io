@@ -7,12 +7,12 @@
 
 :root {
     --primary-color: #C8102E;
+    /* 统一主色调 */
     --secondary-color: #333333;
     --light-gray: #F5F5F5;
     --white: #FFFFFF;
     --gray: #666666;
     --light-red: #F8E0E2;
-    --card-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
 }
 
 body {
@@ -21,7 +21,7 @@ body {
         url("../images/Greatwall.png") center/cover fixed;
     color: var(--secondary-color);
     line-height: 1.8;
-    padding-top: 130px;
+    padding-top: 140px;
 }
 
 body::before {
@@ -41,7 +41,9 @@ body::before {
     border-radius: 999px;
 }
 
-/* 顶部Header样式 */
+
+/* 顶部Header样式 - 完全固定 */
+
 .top-header {
     display: flex;
     justify-content: space-between;
@@ -134,7 +136,9 @@ body::before {
     background: #9b0f24;
 }
 
-/* 导航栏样式 */
+
+/* 导航栏样式 - 固定在头部下方 */
+
 .main-nav {
     background-color: var(--primary-color);
     padding: 10px 0;
@@ -144,14 +148,6 @@ body::before {
     right: 0;
     z-index: 998;
     height: 50px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.main-nav.mobile-open {
-    height: auto;
-    max-height: 300px;
-    overflow-y: auto;
 }
 
 .main-nav ul {
@@ -173,8 +169,6 @@ body::before {
     font-size: 18px;
     transition: color 0.3s, opacity 0.3s;
     opacity: 0.85;
-    display: block;
-    padding: 5px 0;
 }
 
 .main-nav a:hover,
@@ -183,7 +177,12 @@ body::before {
     opacity: 1;
 }
 
-/* 英雄卡片容器 */
+
+/* 与目标页面一致，仅hover变金色，active状态不额外加色 */
+
+
+/* 英雄卡片容器 - 保留原有样式，调整顶部间距 */
+
 .heroes-container {
     max-width: 1200px;
     margin: 60px auto;
@@ -193,42 +192,38 @@ body::before {
     gap: 40px;
 }
 
-/* 英雄卡片样式 */
+
+/* 英雄卡片样式 - 保留原有 */
+
 .hero-card {
     background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(200, 16, 46, 0.08);
-    border-radius: 12px;
+    border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s;
 }
 
 .hero-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: 0 18px 35px rgba(200, 16, 46, 0.18);
 }
 
 .hero-img {
     width: 100%;
-    height: 350px;
+    height: 500px;
     object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.hero-card:hover .hero-img {
-    transform: scale(1.05);
 }
 
 .hero-info {
-    padding: 25px;
+    padding: 20px;
 }
 
 .hero-info h3 {
     color: var(--secondary-color);
-    font-size: 22px;
-    margin-bottom: 12px;
-    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 8px;
 }
 
 .hero-desc {
@@ -237,76 +232,347 @@ body::before {
     line-height: 1.6;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
     overflow: hidden;
 }
 
-/* 模态框样式 */
+/* 响应式设计 */
+/* 平板设备：压缩布局但保留横向导航 */
+@media (max-width: 1024px) {
+    body {
+        padding-top: 90px;
+    }
+
+    .top-header {
+        padding: 12px 25px;
+    }
+
+    .title-area h1 {
+        font-size: 26px;
+        letter-spacing: 1.5px;
+    }
+
+    .search-area input[type="text"] {
+        width: 180px;
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+
+    .main-nav {
+        top: 80px;
+        height: 55px;
+    }
+
+    .main-nav li {
+        margin: 0 30px;
+    }
+
+    .main-nav a {
+        font-size: 17px;
+    }
+
+    .heroes-container {
+        margin: 30px auto;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        padding: 0 20px;
+    }
+
+    .hero-card {
+        border-radius: 18px;
+    }
+
+    .hero-img {
+        height: 280px;
+        border-radius: 18px 18px 0 0;
+    }
+
+    .hero-info {
+        padding: 25px;
+    }
+
+    .hero-info h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .hero-desc {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+}
+
+/* 手机设备：顶部与“纪念展馆”一致，仅保留红色导航条 */
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+        overflow-x: hidden;
+    }
+
+    .top-header {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 0;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        padding: 4px 0;
+    }
+
+    .heroes-container {
+        margin: 20px auto;
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+        gap: 20px;
+    }
+
+    .hero-card {
+        margin-bottom: 0;
+    }
+
+    .hero-img {
+        height: 260px;
+    }
+}
+
+.hero-info {
+    padding: 15px;
+}
+
+.hero-info h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.hero-desc {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.modal {
+    padding: 10px;
+}
+
+.modal-content {
+    max-width: 100%;
+}
+
+.modal-header {
+    height: 400px;
+}
+
+.modal-body {
+    padding: 20px 15px;
+}
+
+.modal-body h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.modal-body .hero-meta {
+    font-size: 13px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+}
+
+.modal-body .hero-detail {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.modal-body .related-link {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.site-footer {
+    padding: 25px 0;
+    margin-top: 40px;
+}
+
+.contact-info {
+    padding: 15px;
+}
+
+.contact-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 15px;
+    margin: 4px 0;
+}
+
+/* 手机设备：顶部与"纪念展馆"一致，仅保留红色导航条 */
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+        overflow-x: hidden;
+    }
+
+    .top-header {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 0;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        padding: 4px 0;
+    }
+
+    .heroes-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 15px;
+        margin-top: 20px;
+    }
+
+    .hero-card {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .hero-img {
+        height: 200px;
+        width: 100%;
+    }
+
+    .hero-info {
+        padding: 15px;
+    }
+
+    .hero-info h3 {
+        font-size: 20px;
+    }
+
+    .hero-desc {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    .modal-header {
+        height: 200px;
+    }
+
+    .modal-body {
+        padding: 20px 15px;
+    }
+
+    .modal-body h2 {
+        font-size: 22px;
+    }
+
+    .modal-body .hero-detail {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .modal-body {
+        padding: 15px 12px;
+    }
+
+    .modal-body h2 {
+        font-size: 22px;
+    }
+
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 20px;
+    }
+}
+
+
+/* 模态框样式 - 保留原有 */
+
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
     display: none;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.modal.active {
-    display: flex;
-    opacity: 1;
 }
 
 .modal-content {
     width: 100%;
-    max-width: 800px;
+    max-width: 700px;
     background-color: var(--white);
-    border-radius: 12px;
+    border-radius: 8px;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-}
-
-.modal.active .modal-content {
-    transform: scale(1);
 }
 
 .modal-close {
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 28px;
+    font-size: 24px;
     color: var(--gray);
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    z-index: 10;
+    transition: color 0.3s;
 }
 
 .modal-close:hover {
     color: var(--primary-color);
-    transform: rotate(90deg);
 }
 
 .modal-header {
     width: 100%;
-    height: 400px;
-    position: relative;
-    overflow: hidden;
+    height: 800px;
 }
 
 .modal-header-img {
@@ -316,19 +582,18 @@ body::before {
 }
 
 .modal-body {
-    padding: 40px;
+    padding: 30px;
 }
 
 .modal-body h2 {
     color: var(--primary-color);
-    font-size: 32px;
+    font-size: 28px;
     margin-bottom: 15px;
-    font-weight: 600;
 }
 
 .modal-body .hero-meta {
     color: var(--gray);
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 25px;
     border-bottom: 1px solid #EEEEEE;
     padding-bottom: 15px;
@@ -336,31 +601,32 @@ body::before {
 
 .modal-body .hero-detail {
     color: var(--secondary-color);
-    line-height: 1.8;
+    line-height: 2;
     font-size: 16px;
     margin-bottom: 30px;
 }
 
 .modal-body .related-link {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background-color: var(--secondary-color);
     color: var(--white);
     text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
 .modal-body .related-link:hover {
     background-color: var(--primary-color);
-    transform: translateY(-2px);
 }
 
-/* 页脚样式 */
+
+/* 页脚样式 - 完全复用目标页面代码 */
+
 .site-footer {
     background-color: #C81C23;
     color: #fff;
-    padding: 45px 0;
+    padding: 30px 0;
     background-image: url("../images/GW03.png");
     background-size: 100% 100px;
     background-repeat: no-repeat;
@@ -387,320 +653,114 @@ body::before {
     margin: 6px 0;
 }
 
-/* 平板端适配 */
-@media (max-width: 1024px) {
-    .main-nav li {
-        margin: 0 40px;
-    }
-    
-    .title-area h1 {
-        font-size: 28px;
-        letter-spacing: 3px;
-    }
-    
-    .heroes-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 30px;
-    }
-    
-    .hero-img {
-        height: 300px;
-    }
-}
 
-/* 手机端适配 */
-@media (max-width: 768px) {
+/* 响应式适配 - 复用目标页面逻辑 */
+
+/* 平板设备 */
+@media (max-width: 1024px) {
     body {
-        padding-top: 130px;
+        padding-top: 90px;
     }
 
     .top-header {
-        flex-direction: column;
-        gap: 10px;
-        height: auto;
-        padding: 10px 15px;
+        height: 70px;
+        padding: 12px 20px;
     }
 
     .title-area h1 {
-        font-size: 18px;
-        letter-spacing: 1px;
-        text-align: center;
-        line-height: 1.3;
+        font-size: 28px;
+        margin-left: 25px;
     }
 
     .logo-area .logo {
-        height: 36px;
-    }
-
-    .search-area {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: flex;
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
+        height: 45px;
     }
 
     .main-nav {
-        position: fixed;
-        top: 80px;
-        height: 0;
-        overflow: hidden;
-        transition: all 0.3s ease;
-    }
-
-    .main-nav.mobile-open {
-        height: auto;
-        max-height: calc(100vh - 80px);
-        overflow-y: auto;
+        top: 70px;
+        height: 45px;
     }
 
     .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
+        justify-content: space-around;
     }
 
     .main-nav li {
-        margin: 8px 0;
-        width: 100%;
-        text-align: center;
+        margin: 0 15px;
     }
 
     .main-nav a {
         font-size: 16px;
-        padding: 12px 0;
-        width: 100%;
-    }
-
-    .heroes-container {
-        margin: 30px auto;
-        grid-template-columns: 1fr;
-        padding: 0 15px;
-        gap: 25px;
-    }
-    
-    .hero-card {
-        margin-bottom: 0;
-        border-radius: 15px;
-    }
-    
-    .hero-img {
-        height: 250px;
-    }
-    
-    .hero-info {
-        padding: 20px;
-    }
-    
-    .hero-info h3 {
-        font-size: 20px;
-    }
-    
-    .hero-desc {
-        font-size: 14px;
-        -webkit-line-clamp: 2;
-    }
-
-    .modal {
-        padding: 15px;
-    }
-
-    .modal-content {
-        max-width: 100%;
-        max-height: 95vh;
-        border-radius: 8px;
     }
 
     .modal-header {
-        height: 250px;
-    }
-
-    .modal-body {
-        padding: 25px 20px;
+        height: 300px;
     }
 
     .modal-body h2 {
-        font-size: 24px;
+        font-size: 30px;
     }
 
     .modal-body .hero-meta {
-        font-size: 14px;
+        font-size: 16px;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
     }
 
     .modal-body .hero-detail {
-        font-size: 15px;
-        line-height: 1.7;
-    }
-
-    .modal-body .related-link {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-
-    .modal-close {
-        top: 15px;
-        right: 15px;
-        width: 35px;
-        height: 35px;
-        font-size: 24px;
-    }
-
-    .site-footer {
-        padding: 30px 0;
-    }
-
-    .contact-info {
-        padding: 15px;
-    }
-
-    .contact-info h3 {
         font-size: 18px;
+        margin-bottom: 35px;
     }
 
-    .contact-info p {
-        font-size: 15px;
+    .hero-img {
+        height: 220px;
     }
 }
 
-/* 小屏手机适配 */
-@media (max-width: 480px) {
+/* 手机设备 */
+/* 全站统一：手机端顶部与"纪念展馆"页面一致，仅保留红色导航条 */
+@media (max-width: 768px) {
     body {
-        padding-top: 120px;
+        padding-top: 0;
+        overflow-x: hidden;
     }
 
     .top-header {
-        padding: 8px 10px;
+        display: none;
     }
 
-    .title-area h1 {
-        font-size: 16px;
-        letter-spacing: 0.5px;
+    .main-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
     }
 
-    .logo-area .logo {
-        height: 32px;
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 0;
     }
 
-    .mobile-menu-btn {
-        width: 25px;
-        height: 18px;
+    .main-nav li {
+        margin: 0;
     }
 
-    .heroes-container {
-        margin: 20px auto;
-        padding: 0 10px;
-        gap: 20px;
-    }
-    
-    .hero-img {
-        height: 200px;
-    }
-    
-    .hero-info {
-        padding: 15px;
-    }
-    
-    .hero-info h3 {
-        font-size: 18px;
-    }
-    
-    .hero-desc {
-        font-size: 13px;
+    .main-nav a {
+        font-size: 14px;
+        padding: 4px 0;
     }
 
     .modal-header {
         height: 200px;
     }
 
-    .modal-body {
-        padding: 20px 15px;
-    }
-
     .modal-body h2 {
-        font-size: 20px;
-    }
-
-    .modal-body .hero-detail {
-        font-size: 14px;
-    }
-
-    .contact-info {
-        text-align: center;
-    }
-}
-
-/* 横屏适配 */
-@media (max-width: 768px) and (orientation: landscape) {
-    body {
-        padding-top: 100px;
-    }
-
-    .top-header {
-        height: 60px;
-        flex-direction: row;
-    }
-
-    .main-nav {
-        top: 60px;
+        font-size: 24px;
     }
 
     .hero-img {
         height: 180px;
     }
-
-    .modal-header {
-        height: 300px;
-    }
-}
-
-/* 加载动画 */
-.hero-card {
-    animation: fadeInUp 0.6s ease-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* 滚动条样式优化 */
-.modal-body::-webkit-scrollbar {
-    width: 8px;
-}
-
-.modal-body::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-
-.modal-body::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 4px;
-}
-
-.modal-body::-webkit-scrollbar-thumb:hover {
-    background: #9b0f24;
-}
-
-
-/* 强制显示所有导航项 */
-.main-nav li {
-    display: block !important;
-    margin: 0 20px !important;
-}
-
-/* 确保导航栏有足够高度 */
-.main-nav {
-    height: auto !important;
-    min-height: 50px !important;
 }
