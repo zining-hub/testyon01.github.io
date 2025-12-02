@@ -418,152 +418,38 @@ body::before {
     }
 }
 
-/* 手机设备 */
+/* 手机设备：隐藏头部，仅保留简洁导航 + 单列卡片 */
 @media (max-width: 768px) {
     body {
-        padding-top: 80px;
-    }
-
-    .top-header {
-        padding: 10px 20px;
-    }
-
-    .title-area h1 {
-        font-size: 16px;
-        letter-spacing: 1px;
-        text-align: center;
-    }
-
-    .search-area {
-        display: none;
-    }
-
-    .mobile-menu-btn {
-        display: flex;
-    }
-
-    .main-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background: var(--primary-color);
-        flex-direction: column;
-        padding-top: 80px;
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-        height: auto;
-        bottom: 0;
-    }
-
-    .main-nav.active {
-        right: 0;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .main-nav li {
-        margin: 20px 0;
-    }
-
-    .main-nav a {
-        font-size: 20px;
-    }
-
-    .vr-cards-container {
-        grid-template-columns: 1fr;
-        padding: 0 15px;
-    }
-
-    .vr-section {
-        padding: 30px 15px;
-        margin-bottom: 30px;
-    }
-
-    .vr-section-title {
-        font-size: 28px;
-        margin-bottom: 30px;
-    }
-
-    .main-content {
-        padding-top: 20px;
-    }
-}
-
-/* 手机设备 */
-@media (max-width: 768px) {
-    body {
-        padding-top: 70px;
+        padding-top: 0;
         overflow-x: hidden;
     }
 
     .top-header {
-        height: 70px;
-        padding: 10px 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo-area .logo {
-        height: 40px;
-    }
-
-    .title-area h1 {
-        font-size: 16px;
-        text-align: center;
-        margin: 0;
-        flex: 1;
-    }
-
-    .mobile-menu-btn {
-        display: flex;
-        width: 40px;
-        height: 40px;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
+        display: none;
     }
 
     .main-nav {
-        position: fixed;
-        top: 70px;
-        right: -100%;
-        width: 80%;
-        height: calc(100vh - 70px);
-        background: var(--primary-color);
-        z-index: 999;
-        transition: right 0.3s ease;
-        padding: 0;
-    }
-
-    .main-nav.active {
-        right: 0;
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
     }
 
     .main-nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
         justify-content: center;
-        height: 100%;
+        gap: 8px 16px;
         padding: 0;
     }
 
     .main-nav li {
-        margin: 15px 0;
-        width: 100%;
-        text-align: center;
+        margin: 0;
     }
 
     .main-nav a {
-        font-size: 18px;
-        padding: 10px 20px;
-        display: block;
-        color: white;
+        font-size: 14px;
+        padding: 4px 0;
     }
 
     .main-content {

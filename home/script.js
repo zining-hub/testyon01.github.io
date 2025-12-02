@@ -8,7 +8,7 @@ navLinks.forEach(link => {
     }
 });
 
-// 移动端菜单切换（统一控制 body 滚动与菜单关闭）
+// 移动端菜单切换（统一使用顶部的汉堡按钮）
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const mainNav = document.querySelector('.main-nav');
 
@@ -16,8 +16,7 @@ if (mobileMenuBtn && mainNav) {
     mobileMenuBtn.addEventListener('click', () => {
         mobileMenuBtn.classList.toggle('active');
         mainNav.classList.toggle('active');
-        // 菜单打开时禁止页面在背后滚动
-        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+        // 这里不需要锁定 body 滚动，因为导航是内联展开的，不会遮挡整屏
     });
 
     // 点击导航链接后关闭菜单
@@ -153,12 +152,14 @@ function handleScrollTop() {
     }
 }
 
-scrollTopBtn ? .addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-});
+}
 
 window.addEventListener('scroll', handleScrollTop);
 

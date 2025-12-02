@@ -445,73 +445,38 @@ body::before {
     }
 }
 
-/* 手机设备：统一头部与下拉导航样式 */
+/* 手机设备：顶部与“纪念展馆”一致，仅保留红色导航条 + 竖向内容排布 */
 @media (max-width: 768px) {
     body {
-        padding-top: 70px;
+        padding-top: 0;
         overflow-x: hidden;
     }
 
     .top-header {
-        height: 70px;
-        padding: 10px 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .title-area h1 {
-        font-size: 16px;
-        text-align: center;
-        margin: 0;
-        flex: 1;
-    }
-
-    .mobile-menu-btn {
-        display: flex;
-        width: 40px;
-        height: 40px;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
+        display: none;
     }
 
     .main-nav {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: var(--primary-color);
-        z-index: 998;
-        max-height: 0;
-        overflow: hidden;
-        padding: 0;
-        transition: max-height 0.3s ease;
-    }
-
-    .main-nav.active {
-        max-height: 260px;
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
     }
 
     .main-nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
         justify-content: center;
-        padding: 10px 0 15px;
-        gap: 4px;
+        gap: 8px 16px;
+        padding: 0;
     }
 
     .main-nav li {
-        margin: 4px 0;
-        width: 100%;
-        text-align: center;
+        margin: 0;
     }
 
     .main-nav a {
-        font-size: 16px;
-        padding: 6px 0;
-        display: block;
-        color: white;
+        font-size: 14px;
+        padding: 4px 0;
     }
 
     .slide {
@@ -663,6 +628,45 @@ body::before {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     transition: opacity 0.3s ease, transform 0.3s ease;
     opacity: 0.9;
+}
+
+/* 新布局：文字盒和图片上下排列，避免重叠 */
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+}
+
+.slide .text-box {
+    position: static;
+    width: 100%;
+    max-width: 620px;
+    max-height: 220px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    margin: 0 auto 16px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.slide .text-box h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.slide .img-box {
+    position: static;
+    margin: 0 auto;
+}
+
+.slide .img-box img {
+    max-width: 100%;
+    height: auto;
 }
 
 

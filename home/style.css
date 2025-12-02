@@ -284,159 +284,43 @@ body::before {
     }
 }
 
-/* 手机设备：顶部紧凑 + 下拉式导航，不再整屏遮挡 */
+/* 手机设备：与纪念展馆统一的顶部+导航样式 */
 @media (max-width: 768px) {
     body {
-        padding-top: 70px;
+        padding-top: 0;
         overflow-x: hidden;
     }
 
     .top-header {
-        height: 70px;
-        padding: 10px 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo-area .logo {
-        height: 40px;
-    }
-
-    .title-area h1 {
-        font-size: 16px;
-        letter-spacing: 1px;
-        text-align: center;
-        margin: 0;
-        flex: 1;
-    }
-
-    .search-area {
         display: none;
     }
 
-    .mobile-menu-btn {
-        display: flex;
-        width: 40px;
-        height: 40px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* 顶部下拉导航：默认折叠，仅在激活时展开一小段高度 */
     .main-nav {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: var(--primary-color);
-        z-index: 998;
-        max-height: 0;
-        overflow: hidden;
-        padding: 0;
-        transition: max-height 0.3s ease;
-    }
-
-    .main-nav.active {
-        max-height: 260px;
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
     }
 
     .main-nav ul {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
         justify-content: center;
-        padding: 10px 0 15px;
-        gap: 4px;
+        gap: 8px 16px;
+        padding: 0;
     }
 
     .main-nav li {
-        margin: 4px 0;
+        margin: 0;
     }
 
     .main-nav a {
         display: block;
-        padding: 6px 0;
-        font-size: 16px;
+        padding: 4px 0;
+        font-size: 14px;
     }
 
     .page-content {
         padding: 0 18px 60px;
-    }
-
-    .carousel-container {
-        height: 60vh;
-        border-radius: 15px;
-    }
-
-    .carousel-caption {
-        left: 20px;
-        bottom: 25px;
-        max-width: 85%;
-    }
-
-    .caption-title {
-        font-size: 20px;
-    }
-
-    .intro-section {
-        padding: 40px 20px;
-        border-radius: 15px;
-    }
-
-    .intro-section h2 {
-        font-size: 24px;
-    }
-
-    .journey-grid {
-        margin-top: 40px;
-        gap: 20px;
-    }
-
-    .journey-card {
-        padding: 20px;
-        border-radius: 15px;
-    }
-
-    .card-header h3 {
-        font-size: 18px;
-    }
-
-    .legacy-section {
-        margin-top: 40px;
-        gap: 15px;
-    }
-
-    .legacy-card {
-        padding: 20px;
-        border-radius: 12px;
-    }
-
-    .quote-section {
-        margin-top: 50px;
-        padding: 35px 30px;
-        border-radius: 15px;
-    }
-
-    .quote-section p {
-        font-size: 18px;
-    }
-
-    .site-footer {
-        padding: 35px 0;
-        background-size: 100% 80px;
-        margin-top: 30px;
-    }
-
-    .contact-info {
-        padding: 15px;
-    }
-
-    .contact-info h3 {
-        font-size: 18px;
-    }
-
-    .contact-info p {
-        font-size: 15px;
     }
 }
 
@@ -444,6 +328,41 @@ body::before {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 30px 80px;
+}
+
+/* 全站统一：手机端顶部与“纪念展馆”页面一致，仅保留红色导航条 */
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+        overflow-x: hidden;
+    }
+
+    .top-header {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 0;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        padding: 4px 0;
+    }
 }
 
 .hero-carousel {
