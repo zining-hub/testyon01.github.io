@@ -1,0 +1,875 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", "Heiti SC", sans-serif;
+}
+
+:root {
+    --primary-color: #C8102E;
+    /* 统一主色调 */
+    --secondary-color: #333333;
+    --light-gray: #F5F5F5;
+    --white: #FFFFFF;
+    --gray: #666666;
+    --light-red: #F8E0E2;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, rgba(200, 16, 46, 0.1), transparent 60%) fixed,
+        url("../images/Greatwall.png") center/cover fixed;
+    color: var(--secondary-color);
+    line-height: 1.8;
+    padding-top: 140px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: -1;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #c8102e, #971126);
+    border-radius: 999px;
+}
+
+
+/* 顶部Header样式 - 完全固定 */
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    padding: 15px 30px;
+    color: var(--primary-color);
+    border-bottom: 1px solid #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    height: 80px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.logo-area .logo {
+    height: 50px;
+    width: auto;
+}
+
+.title-area h1 {
+    font-size: 32px;
+    margin: 0 auto;
+    text-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 4px;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.search-area input {
+    padding: 8px 14px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-area button {
+    padding: 8px 16px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.search-area button:hover {
+    background: #9b0f24;
+}
+
+
+/* 导航栏样式 - 固定在头部下方 */
+
+.main-nav {
+    background-color: var(--primary-color);
+    padding: 10px 0;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    height: 50px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-nav li {
+    margin: 0 80px;
+}
+
+.main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s, opacity 0.3s;
+    opacity: 0.85;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #FFD700;
+    opacity: 1;
+}
+
+.year-timeline {
+    position: sticky;
+    top: 140px;
+    z-index: 900;
+    max-width: 1300px;
+    margin: 0px auto 10px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.year-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.year-item {
+    font-weight: 600;
+    color: var(--secondary-color);
+    padding: 8px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.year-item:hover {
+    transform: translateY(-1px);
+    background: var(--light-red);
+}
+
+.year-item.active {
+    color: #fff;
+    background: linear-gradient(90deg, #c8102e, #971126);
+    box-shadow: 0 6px 16px rgba(200, 16, 46, 0.35);
+}
+
+.year-progress {
+    position: relative;
+    height: 4px;
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.year-progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0%;
+    background: linear-gradient(90deg, #c8102e, #ff6262);
+    transition: width 0.3s ease;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+        transform: scale(1.04);
+    }
+
+    100% {
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+        transform: scale(1);
+    }
+}
+
+.img-box img.pulse {
+    animation: pulseGlow 0.8s ease;
+}
+
+/* 平板设备 */
+@media (max-width: 1024px) {
+    .year-timeline {
+        max-width: 95%;
+        padding: 8px 12px;
+    }
+
+    .year-list {
+        gap: 10px;
+    }
+
+    .year-item {
+        min-width: 70px;
+    }
+
+    .slide {
+        min-height: 650px;
+        border-radius: 20px;
+    }
+
+    .slide.odd .text-box,
+    .slide.even .text-box {
+        width: 450px;
+        height: 350px;
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .slide.odd .text-box h2,
+    .slide.even .text-box h2 {
+        font-size: 26px;
+    }
+
+    .img-box img {
+        max-width: 90%;
+    }
+}
+
+/* 手机设备 */
+@media (max-width: 768px) {
+    .year-timeline {
+        top: 70px;
+        padding: 8px 10px;
+        border-radius: 999px;
+    }
+
+    .year-list {
+        overflow-x: auto;
+        gap: 8px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 10px;
+    }
+
+    .year-item {
+        flex: 0 0 auto;
+        min-width: 64px;
+        text-align: center;
+    }
+
+    .year-link {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}
+
+
+/* 时间轴样式 */
+
+.timeline {
+    width: 100%;
+    padding-top: 0;
+}
+
+.slide {
+    width: 100%;
+    min-height: 720px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
+}
+
+
+/* 背景图片路径（按原命名规则补充，需替换为真实图片路径） */
+
+.slide-1 {
+    background-image: url("./Himage/p918h01.png");
+}
+
+.slide-2 {
+    background-image: url("./Himage/p128h01.png");
+}
+
+.slide-3 {
+    background-image: url("./Himage/pGWh01.png");
+}
+
+.slide-4 {
+    background-image: url("./Himage/pCZh01.png");
+}
+
+.slide-5 {
+    background-image: url("./Himage/p129h01.png");
+}
+
+.slide-6 {
+    background-image: url("./Himage/XA03.png");
+}
+
+/* 侧边时间轴导航 - Removed */
+
+/* 响应式设计 */
+/* 平板设备 */
+@media (max-width: 1024px) {
+    body {
+        padding-top: 90px;
+    }
+
+    .top-header {
+        height: 70px;
+        padding: 12px 20px;
+    }
+
+    .title-area h1 {
+        font-size: 28px;
+        margin-left: 25px;
+    }
+
+    .main-nav {
+        top: 70px;
+        height: 45px;
+    }
+
+    .main-nav ul {
+        justify-content: space-around;
+    }
+
+    .main-nav li {
+        margin: 0 15px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+
+    .slide {
+        height: 650px;
+    }
+
+    .slide.odd .text-box,
+    .slide.even .text-box {
+        position: static;
+        margin: 25px auto;
+        width: 95%;
+        height: auto;
+        max-width: 500px;
+    }
+
+    .slide.odd .text-box h2,
+    .slide.even .text-box h2 {
+        font-size: 30px;
+    }
+
+    .slide.odd .img-box,
+    .slide.even .img-box {
+        position: static;
+        margin: 0 auto;
+        transform: none;
+    }
+
+    .img-box img {
+        width: 95%;
+        max-width: 500px;
+        height: auto;
+    }
+}
+
+/* 手机设备：顶部与“纪念展馆”一致，仅保留红色导航条 + 竖向内容排布 */
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+        overflow-x: hidden;
+    }
+
+    .top-header {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 0;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        padding: 4px 0;
+    }
+
+    .slide {
+        min-height: 100vh;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 15px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slide.odd .text-box,
+    .slide.even .text-box {
+        position: static;
+        margin: 0 auto 30px auto;
+        width: 90%;
+        max-width: 90%;
+        max-height: 250px;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 15px;
+        overflow-y: auto;
+        box-sizing: border-box;
+        align-self: center;
+    }
+
+    .slide.odd .text-box h2,
+    .slide.even .text-box h2 {
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .slide.odd .text-box p,
+    .slide.even .text-box p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+
+    .slide.odd .img-box,
+    .slide.even .img-box {
+        position: static;
+        margin: 0 auto;
+        transform: none;
+        width: auto;
+        max-width: 100%;
+        display: inline-block;
+    }
+
+    .img-box img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 300px;
+        object-fit: contain;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
+}
+
+.slide-7 {
+    background-image: url("./Himage/NJ02.PNG");
+}
+
+.slide-8 {
+    background-image: url("./Himage/WHHZ01.PNG");
+}
+
+.slide-9 {
+    background-image: url("./Himage/CSHZ01.PNG");
+}
+
+.slide-10 {
+    background-image: url("./Himage/btdz01.png");
+}
+
+.slide-11 {
+    background-image: url("./Himage/dpyzz01.png");
+}
+
+.slide-12 {
+    background-image: url("./Himage/mdz01.png");
+}
+
+.slide-13 {
+    background-image: url("./Himage/MDZ02.PNG");
+}
+
+.slide-14 {
+    background-image: url("./Himage/YXGZY01.PNG");
+}
+
+.slide-15 {
+    background-image: url("./Himage/RBTX01.PNG");
+}
+
+
+/* 单数slide布局 */
+
+.slide.odd .text-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 600px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    overflow: auto;
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.slide.odd .text-box h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.slide.odd .img-box {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+}
+
+
+/* 双数slide布局 */
+
+.slide.even .text-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 500px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    overflow: auto;
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.slide.even .text-box h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.slide.even .img-box {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+}
+
+.img-box img {
+    display: block;
+    border: 3px solid white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0.9;
+}
+
+/* 优化布局：文字盒和图片上下排列，确保垂直分布且居中 */
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* 基础文字框样式 */
+.slide .text-box {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    max-height: 350px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    margin: 0 auto 24px auto;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.slide .text-box h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* 基础图片框样式 */
+.slide .img-box {
+    position: static;
+    margin: 0 auto;
+    width: auto;
+    max-width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.slide .img-box img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+
+/* hover效果 */
+
+.text-box:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+.img-box img:hover {
+    opacity: 1;
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+
+/* 滚动条美化 - 优化移动端显示 */
+
+.text-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.text-box::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.text-box::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+}
+
+.text-box::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* 确保所有文字框在移动端都有良好的滚动体验 */
+@media (max-width: 768px) {
+
+    .slide.odd .text-box,
+    .slide.even .text-box {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.7) rgba(255, 255, 255, 0.1);
+        /* 确保文字不会被裁剪 */
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+        /* 增加内边距确保文字不会紧贴边缘 */
+        padding: 20px 15px;
+    }
+}
+
+
+/* 响应式布局（移动端适配） */
+
+/* 小屏幕设备 */
+@media (max-width: 480px) {
+    body {
+        padding-top: 0;
+    }
+
+    .top-header {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 0;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .main-nav a {
+        font-size: 14px;
+        padding: 4px 0;
+    }
+
+    .year-timeline {
+        top: 60px;
+        padding: 6px 8px;
+    }
+
+    .year-list {
+        gap: 8px;
+    }
+
+    .year-item {
+        min-width: 60px;
+        font-size: 14px;
+    }
+}
+
+
+/* 滚动触发动画（让时间轴滑入时显示） */
+
+.slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.site-footer {
+    background-color: #C81C23;
+    color: #fff;
+    padding: 30px 0;
+    /* 背景图片配置：宽度100%、高度100px，底部居中显示 */
+    background-image: url("../images/GW03.png");
+    background-size: 100% 100px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    /* 调整为底部居中 */
+}
+
+.contact-info {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+    /* 调整内边距，避免文字与背景重叠 */
+}
+
+.contact-info h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #FFD700;
+    padding-bottom: 10px;
+}
+
+.contact-info p {
+    font-size: 17px;
+    margin: 6px 0;
+}
+
+.scroll-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(200, 16, 46, 0.9);
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(200, 16, 46, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-6px);
+}
