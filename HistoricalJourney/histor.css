@@ -461,6 +461,9 @@ body::before {
         width: 100%;
         height: auto;
         padding: 8px 0;
+        background-color: #C81C23;
+        box-shadow: none;
+        z-index: 1000;
     }
 
     .main-nav ul {
@@ -468,15 +471,25 @@ body::before {
         justify-content: center;
         gap: 8px 16px;
         padding: 0;
+        margin: 0;
     }
 
     .main-nav li {
         margin: 0;
+        padding: 0;
     }
 
     .main-nav a {
         font-size: 14px;
         padding: 4px 0;
+        color: var(--white);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+        color: #FFD700;
     }
 
     .slide {
@@ -763,54 +776,61 @@ body::before {
 /* 小屏幕设备 */
 @media (max-width: 480px) {
     body {
-        padding-top: 110px;
+        padding-top: 0;
     }
 
     .top-header {
-        height: 60px;
-        padding: 8px 15px;
-    }
-
-    .title-area h1 {
-        font-size: 18px;
-        letter-spacing: 0.5px;
-        margin: 0;
-    }
-
-    .logo-area .logo {
-        height: 35px;
+        display: none;
     }
 
     .main-nav {
-        top: 60px;
-        width: 80%;
-        padding-top: 60px;
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+        background-color: #C81C23;
+        box-shadow: none;
+        z-index: 1000;
     }
 
     .main-nav ul {
-        padding: 15px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 0;
+        margin: 0;
     }
 
     .main-nav li {
-        margin: 12px 0;
+        margin: 0;
+        padding: 0;
     }
 
     .main-nav a {
-        font-size: 16px;
+        font-size: 14px;
+        padding: 4px 0;
+        color: var(--white);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+        color: #FFD700;
     }
 
     .year-timeline {
-        top: 65px;
+        top: 60px;
         padding: 6px 8px;
     }
 
     .year-list {
-        gap: 12px;
+        gap: 8px;
     }
 
     .year-item {
-        min-width: 70px;
-        font-size: 17px;
+        min-width: 60px;
+        font-size: 14px;
     }
 }
 

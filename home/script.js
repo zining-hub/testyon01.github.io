@@ -42,6 +42,8 @@ let currentIndex = 0;
 const itemCount = items.length;
 let interval;
 let dots = [];
+let touchStartX = 0;
+let touchEndX = 0;
 
 // 克隆首张用于无缝衔接
 const firstItemClone = items[0].cloneNode(true);
@@ -134,6 +136,29 @@ prevBtn.addEventListener('click', () => {
 
 carouselContainer.addEventListener('mouseenter', stopInterval);
 carouselContainer.addEventListener('mouseleave', startInterval);
+
+// 触摸滑动事件
+carouselContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopInterval();
+});
+
+carouselContainer.addEventListener('touchmove', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+});
+
+carouselContainer.addEventListener('touchend', () => {
+    const diff = touchStartX - touchEndX;
+    // 左右滑动阈值
+    if (diff > 50) {
+        // 向左滑动
+        nextSlide();
+    } else if (diff < -50) {
+        // 向右滑动
+        prevSlide();
+    }
+    startInterval();
+});
 
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
