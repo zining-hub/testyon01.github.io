@@ -724,8 +724,8 @@ body::before {
 
     /* 移动端内容样式 */
     .carousel-container {
-        height: 40vh;
-        border-radius: 15px;
+        height: 25vh;
+        border-radius: 10px;
         overflow: hidden;
         padding: 0;
         margin: 0;
@@ -848,7 +848,7 @@ body::before {
     }
 
     .carousel-container {
-        height: 40vh;
+        height: 30vh;
         padding: 0;
         margin: 0;
     }
