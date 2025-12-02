@@ -505,7 +505,7 @@ body::before {
     .slide.odd .text-box,
     .slide.even .text-box {
         position: static;
-        margin: 0 auto 30px auto;
+        margin: 0 auto 130px auto;
         width: 90%;
         max-width: 90%;
         max-height: 250px;
@@ -514,6 +514,7 @@ body::before {
         overflow-y: auto;
         box-sizing: border-box;
         align-self: center;
+        z-index: 10;
     }
 
     .slide.odd .text-box h2,
@@ -535,11 +536,12 @@ body::before {
     .slide.odd .img-box,
     .slide.even .img-box {
         position: static;
-        margin: 0 auto;
+        margin: 70px auto 0 auto;
         transform: none;
         width: auto;
         max-width: 100%;
         display: inline-block;
+        z-index: 5;
     }
 
     .img-box img {
