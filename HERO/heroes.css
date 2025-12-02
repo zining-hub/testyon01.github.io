@@ -441,62 +441,134 @@ body::before {
     margin: 4px 0;
 }
 
-/* 小屏幕设备 */
-@media (max-width: 480px) {
+/* 手机设备 */
+@media (max-width: 768px) {
     body {
-        padding-top: 110px;
+        padding-top: 70px;
+        overflow-x: hidden;
     }
 
     .top-header {
-        height: 60px;
-        padding: 8px 15px;
+        height: 70px;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .logo-area .logo {
-        height: 35px;
+        height: 40px;
     }
 
     .title-area h1 {
-        font-size: 18px;
-        letter-spacing: 0.5px;
+        font-size: 16px;
+        text-align: center;
+        margin: 0;
+        flex: 1;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
     }
 
     .main-nav {
+        position: fixed;
+        top: 70px;
+        right: -100%;
         width: 80%;
-        padding-top: 60px;
+        height: calc(100vh - 70px);
+        background: var(--primary-color);
+        z-index: 999;
+        transition: right 0.3s ease;
+        padding: 0;
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0;
     }
 
     .main-nav li {
-        margin: 12px 0;
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
     }
 
     .main-nav a {
-        font-size: 16px;
+        font-size: 18px;
+        padding: 10px 20px;
+        display: block;
+        color: white;
     }
 
     .heroes-container {
-        gap: 15px;
-        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 15px;
+        margin-top: 20px;
+    }
+
+    .hero-card {
+        width: 100%;
+        margin-bottom: 0;
     }
 
     .hero-img {
-        height: 250px;
+        height: 200px;
+        width: 100%;
     }
 
     .hero-info {
-        padding: 12px;
+        padding: 15px;
     }
 
     .hero-info h3 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .hero-desc {
-        font-size: 14px;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
     }
 
     .modal-header {
-        height: 300px;
+        height: 200px;
+    }
+
+    .modal-body {
+        padding: 20px 15px;
+    }
+
+    .modal-body h2 {
+        font-size: 22px;
+    }
+
+    .modal-body .hero-detail {
+        font-size: 15px;
+        line-height: 1.7;
     }
 
     .modal-body {

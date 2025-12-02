@@ -448,62 +448,115 @@ body::before {
 /* 手机设备 */
 @media (max-width: 768px) {
     body {
-        padding-top: 100px;
-        /* 移动端总高度减小 */
+        padding-top: 70px;
+        overflow-x: hidden;
     }
 
     .top-header {
-        height: 60px;
+        height: 70px;
         padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .title-area h1 {
-        font-size: 24px;
-        margin-left: 20px;
+        font-size: 16px;
+        text-align: center;
+        margin: 0;
+        flex: 1;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
     }
 
     .main-nav {
-        top: 60px;
-        /* 对应头部高度调整 */
-        height: 40px;
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background: var(--primary-color);
+        z-index: 999;
+        transition: right 0.3s ease;
+        padding: 0;
+    }
+
+    .main-nav.active {
+        right: 0;
     }
 
     .main-nav ul {
-        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0;
     }
 
     .main-nav li {
-        margin: 0 10px;
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
     }
 
     .main-nav a {
-        font-size: 14px;
+        font-size: 18px;
+        padding: 10px 20px;
+        display: block;
+        color: white;
     }
 
     .slide {
-        height: 600px;
+        min-height: 100vh;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 15px;
     }
 
     .slide.odd .text-box,
     .slide.even .text-box {
         position: static;
-        margin: 20px auto;
-        width: 90%;
+        margin: 15px auto;
+        width: 100%;
         height: auto;
-        max-width: 400px;
+        max-width: none;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+    }
+
+    .slide.odd .text-box h2,
+    .slide.even .text-box h2 {
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .slide.odd .text-box p,
+    .slide.even .text-box p {
+        font-size: 16px;
+        line-height: 1.6;
     }
 
     .slide.odd .img-box,
     .slide.even .img-box {
         position: static;
-        margin: 0 auto;
+        margin: 15px auto;
         transform: none;
+        width: 100%;
     }
 
     .img-box img {
-        width: 90%;
-        max-width: 400px;
+        width: 100%;
         height: auto;
+        border-radius: 8px;
     }
 }
 

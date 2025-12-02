@@ -287,34 +287,28 @@ body::before {
 /* 手机设备 */
 @media (max-width: 768px) {
     body {
-        padding-top: 80px;
+        padding-top: 70px;
+        overflow-x: hidden;
     }
 
-    .scrollable-header {
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 2px;
+    .top-header {
+        height: 70px;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .scrollable-header>* {
-        display: inline-block;
-        vertical-align: middle;
-        min-width: 80px;
-        margin-right: 12px;
+    .logo-area .logo {
+        height: 40px;
     }
 
     .title-area h1 {
         font-size: 16px;
         letter-spacing: 1px;
-        text-align: left;
-        white-space: nowrap;
-        min-width: 320px;
-        margin: 0 8px;
-    }
-
-    .logo-area .logo {
-        height: 36px;
+        text-align: center;
+        margin: 0;
+        flex: 1;
     }
 
     .search-area {
@@ -323,60 +317,102 @@ body::before {
 
     .mobile-menu-btn {
         display: flex;
-    }
-
-    .scrollable-nav {
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 2px;
-    }
-
-    .scrollable-nav ul {
-        flex-direction: row;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
         align-items: center;
-        justify-content: flex-start;
-        min-width: 480px;
-    }
-
-    .scrollable-nav li {
-        margin: 0 24px;
     }
 
     .main-nav {
-        position: static;
-        width: 100%;
-        height: 50px;
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
         background: var(--primary-color);
-        box-shadow: none;
-        padding-top: 0;
-        transition: none;
+        z-index: 999;
+        transition: right 0.3s ease;
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0;
+    }
+
+    .main-nav li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
     }
 
     .main-nav a {
-        font-size: 16px;
+        font-size: 18px;
+        padding: 10px 20px;
+        display: block;
+        color: white;
     }
 
-    .page-content {
-        padding: 0 8px 60px;
-    }
-
-    .carousel-container {
-        height: 180px;
-        min-height: auto;
-    }
-
-    .intro-section,
-    .journey-grid,
-    .legacy-section {
-        padding: 16px 0;
-    }
-
-    .legacy-card {
-        width: 100%;
-        margin-bottom: 12px;
-    }
 }
+
+.page-content {
+    padding: 0 15px 60px;
+}
+
+.carousel-container {
+    height: 200px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.carousel-caption {
+    left: 15px;
+    bottom: 15px;
+    max-width: 85%;
+}
+
+.caption-title {
+    font-size: 18px;
+}
+
+.intro-section,
+.journey-grid,
+.legacy-section {
+    padding: 20px 0;
+}
+
+.intro-section h2 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.journey-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.journey-card {
+    margin-bottom: 0;
+}
+
+.legacy-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.legacy-card {
+    width: 100%;
+    margin-bottom: 0;
+}
+
 
 @media (max-width: 480px) {
     body {
