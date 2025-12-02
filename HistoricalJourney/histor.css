@@ -267,20 +267,20 @@ body::before {
         max-width: 95%;
         padding: 8px 12px;
     }
-    
+
     .year-list {
         gap: 10px;
     }
-    
+
     .year-item {
         min-width: 70px;
     }
-    
+
     .slide {
         min-height: 650px;
         border-radius: 20px;
     }
-    
+
     .slide.odd .text-box,
     .slide.even .text-box {
         width: 450px;
@@ -288,12 +288,12 @@ body::before {
         padding: 12px;
         font-size: 18px;
     }
-    
+
     .slide.odd .text-box h2,
     .slide.even .text-box h2 {
         font-size: 26px;
     }
-    
+
     .img-box img {
         max-width: 90%;
     }
@@ -320,7 +320,7 @@ body::before {
         min-width: 64px;
         text-align: center;
     }
-    
+
     .year-link {
         font-size: 14px;
         padding: 6px 10px;
@@ -445,7 +445,7 @@ body::before {
     }
 }
 
-/* 手机设备 */
+/* 手机设备：统一头部与下拉导航样式 */
 @media (max-width: 768px) {
     body {
         padding-top: 70px;
@@ -479,36 +479,37 @@ body::before {
     .main-nav {
         position: fixed;
         top: 70px;
-        right: -100%;
-        width: 80%;
-        height: calc(100vh - 70px);
+        left: 0;
+        right: 0;
         background: var(--primary-color);
-        z-index: 999;
-        transition: right 0.3s ease;
+        z-index: 998;
+        max-height: 0;
+        overflow: hidden;
         padding: 0;
+        transition: max-height 0.3s ease;
     }
 
     .main-nav.active {
-        right: 0;
+        max-height: 260px;
     }
 
     .main-nav ul {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100%;
-        padding: 0;
+        padding: 10px 0 15px;
+        gap: 4px;
     }
 
     .main-nav li {
-        margin: 15px 0;
+        margin: 4px 0;
         width: 100%;
         text-align: center;
     }
 
     .main-nav a {
-        font-size: 18px;
-        padding: 10px 20px;
+        font-size: 16px;
+        padding: 6px 0;
         display: block;
         color: white;
     }

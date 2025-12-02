@@ -236,7 +236,7 @@ body::before {
 }
 
 /* 响应式设计 */
-/* 平板设备 */
+/* 平板设备：压缩布局但保留横向导航 */
 @media (max-width: 1024px) {
     body {
         padding-top: 90px;
@@ -301,20 +301,30 @@ body::before {
     }
 }
 
-/* 手机设备 */
+/* 手机设备：统一下拉导航样式 */
 @media (max-width: 768px) {
     body {
-        padding-top: 80px;
+        padding-top: 70px;
+        overflow-x: hidden;
     }
 
     .top-header {
-        padding: 10px 20px;
+        height: 70px;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-area .logo {
+        height: 40px;
     }
 
     .title-area h1 {
         font-size: 16px;
-        letter-spacing: 1px;
         text-align: center;
+        margin: 0;
+        flex: 1;
     }
 
     .search-area {
@@ -323,50 +333,64 @@ body::before {
 
     .mobile-menu-btn {
         display: flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
     }
 
     .main-nav {
         position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
+        top: 70px;
+        left: 0;
+        right: 0;
         background: var(--primary-color);
-        flex-direction: column;
-        padding-top: 80px;
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        z-index: 998;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        transition: max-height 0.3s ease;
     }
 
     .main-nav.active {
-        right: 0;
+        max-height: 260px;
     }
 
     .main-nav ul {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        padding: 10px 0 15px;
+        gap: 4px;
     }
 
     .main-nav li {
-        margin: 20px 0;
+        margin: 4px 0;
+        width: 100%;
+        text-align: center;
     }
 
     .main-nav a {
-        font-size: 20px;
+        font-size: 16px;
+        padding: 6px 0;
+        display: block;
+        color: white;
     }
 
     .heroes-container {
         margin: 20px auto;
         grid-template-columns: 1fr;
         padding: 0 15px;
+        gap: 20px;
     }
 
     .hero-card {
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 
     .hero-img {
-        height: 300px;
+        height: 260px;
     }
 }
 
