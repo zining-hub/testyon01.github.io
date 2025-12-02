@@ -1,11 +1,4 @@
-// 2. 导航栏滚动高亮（当前页面保持active状态）
-navLinks.forEach(link => {
-    const linkPath = new URL(link.href).pathname.replace(/\/$/, '');
-    if (linkPath === currentPath) {
-        link.classList.add('active');
-    }
-});
-// 顶部导航激活态（忽略结尾的/差异）
+// 顶部导航激活态（忽略结尾的 / 差异）
 const navLinks = document.querySelectorAll('.main-nav a');
 const currentPath = window.location.pathname.replace(/\/$/, '');
 navLinks.forEach(link => {
@@ -15,7 +8,7 @@ navLinks.forEach(link => {
     }
 });
 
-// 移动端菜单切换
+// 移动端菜单切换（统一控制 body 滚动与菜单关闭）
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const mainNav = document.querySelector('.main-nav');
 
@@ -23,6 +16,8 @@ if (mobileMenuBtn && mainNav) {
     mobileMenuBtn.addEventListener('click', () => {
         mobileMenuBtn.classList.toggle('active');
         mainNav.classList.toggle('active');
+        // 菜单打开时禁止页面在背后滚动
+        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
     });
 
     // 点击导航链接后关闭菜单
@@ -30,6 +25,7 @@ if (mobileMenuBtn && mainNav) {
         link.addEventListener('click', () => {
             mobileMenuBtn.classList.remove('active');
             mainNav.classList.remove('active');
+            document.body.style.overflow = '';
         });
     });
 }
@@ -157,7 +153,7 @@ function handleScrollTop() {
     }
 }
 
-scrollTopBtn?.addEventListener('click', () => {
+scrollTopBtn ? .addEventListener('click', () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'

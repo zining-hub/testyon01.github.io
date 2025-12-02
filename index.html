@@ -47,8 +47,7 @@
                 <div class="carousel">
                     <!-- 轮播图图片，替换为实际路径，href 替换为对应跳转链接 -->
                     <div class="carousel-item">
-                        <a href="https://www.gov.cn/yaowen/liebiao/202509/content_7038950.htm" target="_blank"
-                            class="carousel-link" rel="noopener noreferrer">
+                        <a href="https://www.gov.cn/yaowen/liebiao/202509/content_7038950.htm" target="_blank" class="carousel-link" rel="noopener noreferrer">
                             <img src="images/index01.png" alt="国家纪念活动现场" class="carousel-img">
                             <div class="carousel-caption">
                                 <p class="caption-kicker">国家记忆</p>
@@ -57,8 +56,7 @@
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <a href="https://www.news.cn/zt/jnkzsl80zn/index.html" target="_blank" class="carousel-link"
-                            rel="noopener noreferrer">
+                        <a href="https://www.news.cn/zt/jnkzsl80zn/index.html" target="_blank" class="carousel-link" rel="noopener noreferrer">
                             <img src="images/index02.png" alt="新华社专题页面" class="carousel-img">
                             <div class="carousel-caption">
                                 <p class="caption-kicker">媒体聚焦</p>
@@ -67,8 +65,7 @@
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <a href="https://www.bilibili.com/video/BV1Pga6zDEbT/" target="_blank" class="carousel-link"
-                            rel="noopener noreferrer">
+                        <a href="https://www.bilibili.com/video/BV1Pga6zDEbT/" target="_blank" class="carousel-link" rel="noopener noreferrer">
                             <img src="images/index03.png" alt="青年影像致敬抗战" class="carousel-img">
                             <div class="carousel-caption">
                                 <p class="caption-kicker">青年接力</p>
@@ -181,26 +178,6 @@
     </button>
 
     <script src="home/script.js"></script>
-    <script>
-        // 移动端菜单交互
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mainNav = document.querySelector('.main-nav');
-        
-        if (mobileMenuBtn && mainNav) {
-            mobileMenuBtn.addEventListener('click', function() {
-                mainNav.classList.toggle('active');
-                document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
-            });
-            
-            // 点击菜单项关闭菜单
-            const navLinks = mainNav.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mainNav.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
-        }
-    </script>
 </body>
+
 </html>
