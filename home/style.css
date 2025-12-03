@@ -820,7 +820,7 @@ body::before {
 
     /* 移动端内容样式 */
     .carousel-container {
-        height: 25vh;
+        height: 150px;
         border-radius: 10px;
         overflow: hidden;
         padding: 0;
@@ -852,12 +852,12 @@ body::before {
 
     .carousel-caption {
         left: 20px;
-        bottom: 25px;
-        max-width: 85%;
+        bottom: 20px;
+        max-width: 80%;
     }
 
     .caption-title {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .intro-section {
@@ -944,7 +944,7 @@ body::before {
     }
 
     .carousel-container {
-        height: 30vh;
+        height: 180px;
         padding: 0;
         margin: 0;
     }
@@ -963,6 +963,10 @@ body::before {
         padding: 0;
     }
 
+    .carousel-link {
+        -webkit-tap-highlight-color: transparent;
+    }
+
     .carousel-img {
         object-fit: cover;
         width: 100%;
@@ -976,7 +980,7 @@ body::before {
 
     .carousel-caption {
         left: 15px;
-        bottom: 20px;
+        bottom: 15px;
         max-width: 80%;
     }
 
@@ -987,7 +991,7 @@ body::before {
     }
 
     .caption-title {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .intro-section {
