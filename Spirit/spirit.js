@@ -1,6 +1,25 @@
 // 抗战精神页面JS文件，用于后续功能扩展
 // 示例：可添加搜索功能、导航高亮、滚动动画等
 
+// 图片预加载功能
+function preloadSpiritImages() {
+    // 预加载抗战精神页面的重要图片
+    const imagesToPreload = [
+        '../images/logo01.png',
+        '../images/BT.jpg',
+        '../images/langyashan.png',
+        '../images/zhangzizhong.png',
+        '../images/pengdehuai.png',
+        '../images/kangrihome1.png',
+        '../images/kangrihome2.png'
+    ];
+
+    imagesToPreload.forEach(imageSrc => {
+        const img = new Image();
+        img.src = imageSrc;
+    });
+}
+
 // 1. 搜索功能（示例）
 document.querySelector('.search-area button').addEventListener('click', function() {
     const searchText = document.querySelector('.search-area input').value.trim();
@@ -36,6 +55,9 @@ window.addEventListener('scroll', function() {
 
 // 页面加载时初始化卡片状态
 window.addEventListener('load', function() {
+    // 预加载图片
+    preloadSpiritImages();
+    
     const cards = document.querySelectorAll('.connotation-card');
     cards.forEach(card => {
         card.style.opacity = '0';

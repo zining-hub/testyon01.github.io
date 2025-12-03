@@ -505,7 +505,7 @@ body::before {
     .slide.odd .text-box,
     .slide.even .text-box {
         position: static;
-        margin: 0 auto 130px auto;
+        margin: 0 auto 150px auto;
         width: 90%;
         max-width: 90%;
         max-height: 250px;
@@ -900,4 +900,350 @@ body::before {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(-6px);
+}
+
+/* 传承与未来区块样式 */
+.inheritance-future {
+    background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(200, 16, 46, 0.1) 100%);
+    padding: 80px 20px;
+    margin: 50px 0;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.inheritance-future::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.future-title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.future-title::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+.future-content {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.future-text {
+    flex: 1;
+    min-width: 300px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--secondary-color);
+}
+
+.intro {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+.values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.value-item {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.value-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.value-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.value-item h3 {
+    color: var(--primary-color);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.conclusion {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(200, 16, 46, 0.05);
+    border-radius: 12px;
+}
+
+.future-visual {
+    flex: 0 0 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visual-circle {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #FF6B6B);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: rotate 20s linear infinite;
+    box-shadow: 0 20px 60px rgba(200, 16, 46, 0.3);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.circle-inner {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: counter-rotate 20s linear infinite;
+}
+
+@keyframes counter-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.circle-text {
+    position: absolute;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    user-select: none;
+}
+
+.circle-text:hover {
+    transform: scale(1.1);
+    background: white;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.circle-text:nth-child(1) {
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.circle-text:nth-child(2) {
+    bottom: 40px;
+    left: 30%;
+    transform: translateX(-50%);
+}
+
+.circle-text:nth-child(3) {
+    bottom: 40px;
+    right: 30%;
+    transform: translateX(50%);
+}
+
+/* 文字飘落动画 */
+.falling-text-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.falling-text {
+    position: absolute;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fall linear forwards;
+    opacity: 0;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+    .future-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .future-visual {
+        flex: 1;
+    }
+
+    .future-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .inheritance-future {
+        padding: 40px 15px;
+        margin: 30px 0;
+    }
+
+    .future-title {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+
+    .future-text {
+        font-size: 16px;
+    }
+
+    .intro {
+        font-size: 18px;
+    }
+
+    .values {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .visual-circle {
+        width: 280px;
+        height: 280px;
+    }
+
+    .circle-inner {
+        width: 220px;
+        height: 220px;
+    }
+
+    .circle-text {
+        font-size: 24px;
+    }
+
+    .conclusion {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .future-title {
+        font-size: 24px;
+    }
+
+    .visual-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .circle-inner {
+        width: 170px;
+        height: 170px;
+    }
+
+    .circle-text {
+        font-size: 20px;
+    }
 }

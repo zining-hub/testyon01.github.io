@@ -16,7 +16,7 @@
     <!-- 顶部区域：Logo + 标题 + 搜索框（固定不动） -->
     <header class="top-header">
         <div class="logo-area">
-            <img src="../images/logo01.png" alt="Logo" class="logo">
+            <img src="../images/logo01.png" alt="Logo" class="logo" loading="lazy">
         </div>
         <div class="title-area">
             <h1>烽 火 岁 月 铭 民 族 史，铁 血 忠 魂 铸 英 雄 碑</h1>
@@ -50,7 +50,7 @@
             <div class="vr-cards-container">
                 <!-- VR展厅卡片 1: 烽火印记 -->
                 <a href="https://www.1937china.com/kzgdata/clzl/vrzl/qqztvr2024/#/" target="_blank" class="vr-card">
-                    <img src="../Redhall/image/fenghuo.png" alt="烽火印记——北京抗日战争主题片区特展">
+                    <img src="../Redhall/image/fenghuo.png" alt="烽火印记——北京抗日战争主题片区特展" loading="lazy">
                     <div class="vr-card-info">
                         <h3>烽火印记</h3>
                         <p>聚焦北京抗日战争主题片区，用好红色资源，赓续红色血脉。</p>
@@ -60,7 +60,7 @@
 
                 <!-- VR展厅卡片 2: 伟大工程 -->
                 <a href="https://www.1937china.com/kzgdata/clzl/vrzl/qqztvr2023/" target="_blank" class="vr-card">
-                    <img src="../Redhall/image/weida.png" alt="伟大工程——抗战时期中国共产党的建设展">
+                    <img src="../Redhall/image/weida.png" alt="伟大工程——抗战时期中国共产党的建设展" loading="lazy">
                     <div class="vr-card-info">
                         <h3>伟大工程</h3>
                         <p>深入了解抗战时期党的建设，感受中国共产党如何成为中流砥柱。</p>
@@ -71,7 +71,7 @@
                 <!-- VR展厅卡片 3: 民族先锋 -->
                 <a href="https://www.1937china.com/kzgdata/clzl/vrzl/qqztvr2022/?scene_id=98093154" target="_blank"
                     class="vr-card">
-                    <img src="../Redhall/image/yinji.png" alt="民族先锋——中国共产党抗战英烈事迹展">
+                    <img src="../Redhall/image/yinji.png" alt="民族先锋——中国共产党抗战英烈事迹展" loading="lazy">
                     <div class="vr-card-info">
                         <h3>民族先锋</h3>
                         <p>回顾抗战英烈的英勇事迹，缅怀为民族解放事业献身的英雄。</p>
@@ -103,23 +103,23 @@
         </div>
     </footer>
 
-    <!-- 引入JS文件（确保与HTML同目录） -->
-    <script src="redhall.js"></script>
+    <!-- 引入外部JS文件 -->
+    <script src="./redhall.js"></script>
     <script>
         // 移动端菜单交互
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mainNav = document.querySelector('.main-nav');
-        
+
         if (mobileMenuBtn && mainNav) {
-            mobileMenuBtn.addEventListener('click', function() {
+            mobileMenuBtn.addEventListener('click', function () {
                 mainNav.classList.toggle('active');
                 document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
             });
-            
+
             // 点击菜单项关闭菜单
             const navLinks = mainNav.querySelectorAll('a');
             navLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     mainNav.classList.remove('active');
                     document.body.style.overflow = '';
                 });

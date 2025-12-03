@@ -1,5 +1,24 @@
+// 图片预加载功能
+function preloadRedhallImages() {
+    // 预加载纪念展馆页面的重要图片
+    const imagesToPreload = [
+        '../images/logo01.png',
+        './image/fenghuo.png',
+        './image/weida.png',
+        './image/yinji.png'
+    ];
+
+    imagesToPreload.forEach(imageSrc => {
+        const img = new Image();
+        img.src = imageSrc;
+    });
+}
+
 // 等待DOM完全加载后执行
 document.addEventListener('DOMContentLoaded', function() {
+    // 预加载图片
+    preloadRedhallImages();
+    
     // 2. 导航栏滚动高亮（当前页面保持active状态）
     const navLinks = document.querySelectorAll('.main-nav a');
     navLinks.forEach(link => {
