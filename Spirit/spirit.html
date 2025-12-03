@@ -106,7 +106,7 @@
             <div class="case-list">
                 <!-- 案例1：百团大战 -->
                 <div class="case-item">
-                    <img src="../images/BT.PNG" alt="百团大战" class="case-img" loading="lazy">
+                    <img src="../images/BT.jpg" alt="百团大战" class="case-img" loading="lazy">
                     <div class="case-content">
                         <h3>百团大战：自强不息的战略反击</h3>
                         <p>1940年8月至12月，八路军在彭德怀指挥下发动百团大战，这是抗日战争中中国军队主动出击日军的最大规模战役。战役初期，八路军投入105个团，对华北日军的交通线、据点展开大规模破袭战，随后又进行了反“扫荡”作战。百团大战共毙伤日军2万余人，破坏铁路470余公里、公路1500余公里，摧毁大量日军据点，沉重打击了日军的“囚笼政策”，极大地鼓舞了全国军民的抗日斗志，充分体现了中国人民不畏强暴、自强不息的顽强拼搏精神。
@@ -174,17 +174,17 @@
         // 移动端菜单交互
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mainNav = document.querySelector('.main-nav');
-        
+
         if (mobileMenuBtn && mainNav) {
-            mobileMenuBtn.addEventListener('click', function() {
+            mobileMenuBtn.addEventListener('click', function () {
                 mainNav.classList.toggle('active');
                 document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
             });
-            
+
             // 点击菜单项关闭菜单
             const navLinks = mainNav.querySelectorAll('a');
             navLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     mainNav.classList.remove('active');
                     document.body.style.overflow = '';
                 });
